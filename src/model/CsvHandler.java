@@ -1,4 +1,4 @@
-package StudentInfoSystem.src.model;
+package model;
 
 import java.io.*;
 import java.util.*;

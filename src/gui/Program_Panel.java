@@ -1,4 +1,4 @@
-package StudentInfoSystem.src.gui;
+package gui;
 
 public class Program_Panel {
     

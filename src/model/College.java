@@ -1,4 +1,4 @@
-package StudentInfoSystem.src.model;
+package model;
 
 public class College {
     
