@@ -1,5 +1,4 @@
-package StudentInfoSystem.src.model;
-
+package src.model;
 public class Student {
 
     private String id;
