@@ -13,6 +13,7 @@ public class Student_Panel extends JPanel{
     public Student_Panel() {
         setLayout(new BorderLayout(10,10));
 
+        /*text fields*/
         JPanel formPanel = new JPanel(new GridLayout(6,2,5,5));
         formPanel.add(new JLabel("ID (YYYY-NNNN):"));
         tfId = new JTextField();
@@ -35,9 +36,28 @@ public class Student_Panel extends JPanel{
         formPanel.add(tfYear);
 
         formPanel.add(new JLabel("Gender:"));
-        tfYear = new JTextField();
+        tfGender = new JTextField();
         formPanel.add(tfGender);
 
         add(formPanel, BorderLayout.WEST);
+
+        /*table*/
+        String[] column = {"ID", "First Name", "Last Name", "Program Code", "Year Level", "Gender"};
+        tablemodel = new DefaultTableModel(column, 0);
+        studentTable = new JTable(tablemodel);
+        JScrollPane scroll = new JScrollPane(studentTable);
+        add(scroll, BorderLayout.CENTER);
+
+        /*buttons */
+        JPanel button = new JPanel();
+        JButton add = new JButton("Add Student");
+        JButton update = new JButton("Update");
+        JButton delete = new JButton("Delete");
+
+        button.add(add);
+        button.add(update);
+        button.add(delete);
+        
+        add(button, BorderLayout.SOUTH);
     }
 }
