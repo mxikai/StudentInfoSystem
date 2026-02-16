@@ -3,7 +3,6 @@ package gui;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.*;
-import java.awt.event.*;
 import model.CsvHandler;
 
 public class Student_Panel extends JPanel{
@@ -44,8 +43,53 @@ public class Student_Panel extends JPanel{
         JButton delete = createStyledButton("Delete student", "🗑");
 
         //sorting filter
-        String[] sortfilter = {"Sort filter", "ID No."}
+        String[] sortfilter = {"Sort filter", "ID No.", "Last Name", "Program"};
+        JComboBox<String> sort = new JComboBox<>(sortfilter);
 
+        buttons.add(add);
+        buttons.add(update);
+        buttons.add(delete);
+        buttons.add(sort);
+
+        JPanel centerContainer = new JPanel(new BorderLayout(10,10));
+        centerContainer.setOpaque(false);
+        centerContainer.add(buttons, BorderLayout.NORTH);
+
+        /*main table */
+        String[] columns = {"ID No.", "First Name", "Last Name", "Program", "Year", "Gender"};
+        tableModel = new DefaultTableModel(columns, 0);
+        studentTable = new JTable(tableModel);
+
+        loadDatafromCSV();
+
+        JScrollPane scroll = new JScrollPane(studentTable);
+        centerContainer.add(scroll, BorderLayout.CENTER);
+
+        add(centerContainer, BorderLayout.CENTER);
+
+        /*button actions */
+        add.addActionListener( e ->{
+            //will add later
+            /*StudentDialog dialog = new StudentDialog(null);
+            dialog.setVisible(true);*/
+            JOptionPane.showMessageDialog(null, "This will open overlay later");
+        });
     }
+    
+        //designing buttons
+        private JButton createStyledButton(String text, String symbol) {
+            JButton bttn = new JButton(symbol + " " + text);
+            bttn.setBackground(Color.decode("#68191F"));
+            bttn.setForeground(Color.WHITE);
+            bttn.setFocusPainted(false);
+            return bttn;
+        }
+
+        private void loadDatafromCSV() {
+            //reuse
+            java.util.List<String[]> data = CsvHandler.readCSV(filepath);
+            for (String[] row : data) {
+                tableModel.addRow(row);
+            }
     }
 }
