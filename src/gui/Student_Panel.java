@@ -2,62 +2,50 @@ package gui;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
+import java.awt.event.*;
+import model.CsvHandler;
 
 public class Student_Panel extends JPanel{
-    private JTextField tfId, tfFirstName, tfLastName, tfProgram, tfYear, tfGender;
     private JTable studentTable;
-    private DefaultTableModel tablemodel;
-    private String filePath = "src/data/student_data.csv";
+    private DefaultTableModel tableModel;
+    private String filepath = "src/data/student_data.csv";
 
     public Student_Panel() {
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(20,20));
+        setBackground(Color.decode("#F1ECE4"));
 
-        /*text fields*/
-        JPanel formPanel = new JPanel(new GridLayout(6,2,5,5));
-        formPanel.add(new JLabel("ID (YYYY-NNNN):"));
-        tfId = new JTextField();
-        formPanel.add(tfId);
+        /*title & search section*/
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setOpaque(false);
 
-        formPanel.add(new JLabel("First Name:"));
-        tfFirstName = new JTextField();
-        formPanel.add(tfFirstName);
+        JLabel title = new JLabel("Students");
+        title.setFont(new Font("Kameron", Font.BOLD, 64));
+        title.setForeground(Color.decode("#68191F"));
 
-        formPanel.add(new JLabel("Last Name:"));
-        tfLastName = new JTextField();
-        formPanel.add(tfLastName);
+        JPanel search = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        search.setOpaque(false);
+        JTextField tfSearch = new JTextField(20);
+        tfSearch.setText("Search students...");
+        search.add(tfSearch);
 
-        formPanel.add(new JLabel("Program Code (ex. BSCS):"));
-        tfProgram = new JTextField();
-        formPanel.add(tfProgram);
+        topPanel.add(title, BorderLayout.WEST);
+        topPanel.add(search, BorderLayout.EAST);
 
-        formPanel.add(new JLabel("Year Level:"));
-        tfYear = new JTextField();
-        formPanel.add(tfYear);
+        add(topPanel, BorderLayout.NORTH);
 
-        formPanel.add(new JLabel("Gender:"));
-        tfGender = new JTextField();
-        formPanel.add(tfGender);
 
-        add(formPanel, BorderLayout.WEST);
+        /*buttons + filter */
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 10));
+        buttons.setOpaque(false);
 
-        /*table*/
-        String[] column = {"ID", "First Name", "Last Name", "Program Code", "Year Level", "Gender"};
-        tablemodel = new DefaultTableModel(column, 0);
-        studentTable = new JTable(tablemodel);
-        JScrollPane scroll = new JScrollPane(studentTable);
-        add(scroll, BorderLayout.CENTER);
+        JButton add = createStyledButton("Add a student", "+");
+        JButton update = createStyledButton("Update Student", "✎");
+        JButton delete = createStyledButton("Delete student", "🗑");
 
-        /*buttons */
-        JPanel button = new JPanel();
-        JButton add = new JButton("Add Student");
-        JButton update = new JButton("Update");
-        JButton delete = new JButton("Delete");
+        //sorting filter
+        String[] sortfilter = {"Sort filter", "ID No."}
 
-        button.add(add);
-        button.add(update);
-        button.add(delete);
-        
-        add(button, BorderLayout.SOUTH);
+    }
     }
 }
