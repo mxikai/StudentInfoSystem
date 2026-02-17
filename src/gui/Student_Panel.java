@@ -19,7 +19,7 @@ public class Student_Panel extends JPanel{
         topPanel.setOpaque(false);
 
         JLabel title = new JLabel("Students");
-        title.setFont(new Font("Kameron", Font.BOLD, 64));
+        title.setFont(new Font("Serif", Font.BOLD, 50));
         title.setForeground(Color.decode("#68191F"));
 
         JPanel search = new JPanel(new FlowLayout(FlowLayout.RIGHT));
