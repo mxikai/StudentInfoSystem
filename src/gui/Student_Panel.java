@@ -1,95 +1,99 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.table.*;
+import javafx.collections.*;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.*;
 import model.CsvHandler;
+import model.Student;
 
-public class Student_Panel extends JPanel{
-    private JTable studentTable;
-    private DefaultTableModel tableModel;
-    private String filepath = "src/data/student_data.csv";
+import java.util.List;
 
-    public Student_Panel() {
-        setLayout(new BorderLayout(20,20));
-        setBackground(Color.decode("#F1ECE4"));
+public class Student_Panel {
+    private String filePath = "src/data/student_data.csv";
 
-        /*title & search section*/
-        JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setOpaque(false);
+    public Parent getView() {
+        VBox layout = new VBox(20);
+        layout.setPadding(new Insets(30));
 
-        JLabel title = new JLabel("Students");
-        title.setFont(new Font("Serif", Font.BOLD, 50));
-        title.setForeground(Color.decode("#68191F"));
+        /*header */
+        HBox header = new HBox();
+        header.setAlignment(Pos.CENTER_LEFT);
 
-        JPanel search = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        search.setOpaque(false);
-        JTextField tfSearch = new JTextField(20);
-        tfSearch.setText("Search students...");
-        search.add(tfSearch);
+        Label title = new Label("Students");
+        title.getStyleClass().add("header-title");
 
-        topPanel.add(title, BorderLayout.WEST);
-        topPanel.add(search, BorderLayout.EAST);
+        //search
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        add(topPanel, BorderLayout.NORTH);
+        TextField search = new TextField();
+        search.setPromptText("Search students...");
+        search.setStyle("-fx-background-radius: 20; -fx-padding: 10;");
 
+        header. getChildren().addAll(title, spacer, search);
 
-        /*buttons + filter */
-        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 10));
-        buttons.setOpaque(false);
+        //action buttons
+        HBox toolbar = new HBox(15);
+        Button add = new Button("+ Add a student");
+        Button update = new Button("✎ Update student");
+        Button delete = new Button("🗑 Delete student");
 
-        JButton add = createStyledButton("Add a student", "+");
-        JButton update = createStyledButton("Update Student", "✎");
-        JButton delete = createStyledButton("Delete student", "🗑");
+        add.getStyleClass().add("action-button");
+        update.getStyleClass().add("action-button");
+        delete.getStyleClass().add("action-button");
 
-        //sorting filter
-        String[] sortfilter = {"Sort filter", "ID No.", "Last Name", "Program"};
-        JComboBox<String> sort = new JComboBox<>(sortfilter);
+        toolbar.getChildren().addAll(add, update, delete);
 
-        buttons.add(add);
-        buttons.add(update);
-        buttons.add(delete);
-        buttons.add(sort);
+        //table
+        TableView<Student> table = new TableView<>();
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        JPanel centerContainer = new JPanel(new BorderLayout(10,10));
-        centerContainer.setOpaque(false);
-        centerContainer.add(buttons, BorderLayout.NORTH);
+        TableColumn<Student, String> id = new TableColumn<>("ID No.");
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        /*main table */
-        String[] columns = {"ID No.", "First Name", "Last Name", "Program", "Year", "Gender"};
-        tableModel = new DefaultTableModel(columns, 0);
-        studentTable = new JTable(tableModel);
+        TableColumn<Student, String> first = new TableColumn<>("First Name");
+        first.setCellValueFactory(new PropertyValueFactory<>("first"));
 
-        loadDatafromCSV();
+        TableColumn<Student, String> last = new TableColumn<>("Last Name");
+        last.setCellValueFactory(new PropertyValueFactory<>("last"));
 
-        JScrollPane scroll = new JScrollPane(studentTable);
-        centerContainer.add(scroll, BorderLayout.CENTER);
+        TableColumn<Student, String> program = new TableColumn<>("Program");
+        program.setCellValueFactory(new PropertyValueFactory<>("program"));
 
-        add(centerContainer, BorderLayout.CENTER);
+        TableColumn<Student, String> year = new TableColumn<>("Year");
+        year.setCellValueFactory(new PropertyValueFactory<>("year"));
 
-        /*button actions */
-        add.addActionListener( e ->{
-            //will add later
-            /*StudentDialog dialog = new StudentDialog(null);
-            dialog.setVisible(true);*/
-            JOptionPane.showMessageDialog(null, "This will open overlay later");
-        });
+        TableColumn<Student, String> gender = new TableColumn<>("Gender");
+        gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+
+        table.getColumns().addAll(id, first, last, program, year, gender);
+
+        loadData(table);
+
+        layout.getChildren().addAll(header, toolbar, table);
+        return layout;
     }
-    
-        //designing buttons
-        private JButton createStyledButton(String text, String symbol) {
-            JButton bttn = new JButton(symbol + " " + text);
-            bttn.setBackground(Color.decode("#68191F"));
-            bttn.setForeground(Color.WHITE);
-            bttn.setFocusPainted(false);
-            return bttn;
-        }
 
-        private void loadDatafromCSV() {
-            //reuse
-            java.util.List<String[]> data = CsvHandler.readCSV(filepath);
-            for (String[] row : data) {
-                tableModel.addRow(row);
+    private void loadData(TableView<Student> table) {
+    ObservableList<Student> students = FXCollections.observableArrayList();
+    List<String[]> rawData = CsvHandler.readCSV(filePath);
+
+        for (String[] row : rawData) {
+            // Only process if the row has enough columns AND the first column isn't "ID" (header)
+            if(row.length >= 6 && !row[0].equalsIgnoreCase("id")) {
+                try {
+                    // .trim() removes hidden spaces that cause parsing errors
+                    int yearValue = Integer.parseInt(row[4].trim()); 
+                    Student s = new Student(row[0], row[1], row[2], row[3], yearValue, row[5]);
+                    students.add(s);
+                } catch (NumberFormatException e) {
+                    System.out.println("Skipping invalid row: " + String.join(",", row));
+                }
             }
+        }
+        table.setItems(students);
     }
 }

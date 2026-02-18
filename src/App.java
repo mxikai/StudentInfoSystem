@@ -1,93 +1,60 @@
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import gui.Student_Panel;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
-public class App {
-    private static CardLayout cardLayout ;
-    private static JPanel mainContent;
+public class App extends Application {
+
+    private BorderPane mainLayout;
+
+    @Override
+    public void start(Stage primaryStage) {
+        mainLayout = new BorderPane();
+
+        /*sidebar*/
+        VBox sidebar = new VBox(20);
+        sidebar.getStyleClass().add("sidebar");
+        sidebar.setPrefWidth(280);
+
+        Label title = new Label("Simple\nStudent\nInformation\nSystem");
+        title.setStyle("-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #F1ECE4;");
+
+        Button students = createNavButton("Students");
+        Button programs = createNavButton("Programs");
+        Button colleges = createNavButton("Colleges");
+
+        students.setOnAction(e -> mainLayout.setCenter(new Student_Panel().getView()));
+        programs.setOnAction(e -> System.out.println("Programs clicked.")); //placeholder
+        colleges.setOnAction(e -> System.out.println("Programs clicked.")); //placeholder
+
+        sidebar.getChildren().addAll(title, students, programs, colleges);
+        mainLayout.setLeft(sidebar);
+
+        mainLayout.setCenter(new Student_Panel().getView());
+
+        Scene scene = new Scene (mainLayout, 1200, 800);
+
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+        primaryStage.setTitle("Student Information System");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private Button createNavButton (String text) {
+        Button button = new Button(text);
+        button.getStyleClass().add("nav-button");
+        button.setMaxWidth(Double.MAX_VALUE);
+        return button;
+    }
 
     public static void main(String[] args) {
-        /*look and feel */
-        try {
-            FlatLightLaf.setup();
-            UIManager.put("Button.arc", 15);
-            UIManager.put("Component.arc", 15);
-        } catch (Exception e) {
-            System.out.println("Look and Feel failed.");
-        }
-
-        /*main window*/
-        JFrame frame = new JFrame("Simple Student Information System");
-        frame.setSize(1000,600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
-        frame.setLocationRelativeTo(null);
-
-        /*sidebar */
-        JPanel sidebar = new JPanel();
-        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-        sidebar.setBackground(Color.decode("#68191F"));
-        sidebar.setPreferredSize(new Dimension(280, 0));
-        sidebar.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
-
-        /*titel*/
-        JLabel title = new JLabel("<html>Simple<br>Student<br>Information<br>System</html>");
-        title.setFont(new Font("Serif", Font.BOLD, 24));
-        title.setForeground(Color.WHITE);
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        /*tabs */
-        JButton students = createNavButton("Students");
-        JButton programs = createNavButton("Programs");
-        JButton colleges = createNavButton("Colleges");
-
-        sidebar.add(title);
-        sidebar.add(Box.createRigidArea(new Dimension(0,80)));
-        sidebar.add(students);
-        sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
-        sidebar.add(programs);
-        sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
-        sidebar.add(colleges);
-
-
-        /*main pt 2 */
-        cardLayout = new CardLayout();
-        mainContent = new JPanel(cardLayout);
-        mainContent.setBackground(Color.decode("#68191F"));
-
-        Student_Panel studentpanel = new Student_Panel();
-        JPanel programpanel = new JPanel(); //placeholder
-        JPanel collegepanel = new JPanel(); //placeholder
-
-        mainContent.add(studentpanel, "STUDENTS");
-        mainContent.add(programpanel, "PROGRAMS");
-        mainContent.add(collegepanel, "COLLEGES");
-
-        students.addActionListener(e -> cardLayout.show(mainContent, "STUDENTS"));
-        programs.addActionListener(e -> cardLayout.show(mainContent, "PROGRAMS"));
-        colleges.addActionListener(e -> cardLayout.show(mainContent, "COLLEGES"));
-        
-        frame.add(sidebar, BorderLayout.WEST);
-        frame.add(mainContent, BorderLayout.CENTER);
-
-        frame.setVisible(true);
+        Application.launch(args);
     }
 
-    private static JButton createNavButton(String text) {
-        JButton btn = new JButton(text);
-        btn.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        btn.setForeground(Color.WHITE);
-        btn.setBackground(Color.decode("#68191F"));
-        btn.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-        btn.setFocusPainted(false);
-        btn.setBorderPainted(false);
-        btn.setContentAreaFilled(false);
-        btn.setAlignmentX(Component.LEFT_ALIGNMENT);
-        btn.setHorizontalAlignment(SwingConstants.LEFT);
-        return btn;
-    }
 }
-
