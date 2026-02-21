@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,20 +16,23 @@ public class App extends Application {
         mainLayout = new BorderPane();
 
         /*sidebar*/
-        VBox sidebar = new VBox(20);
+        VBox sidebar = new VBox(15);
         sidebar.getStyleClass().add("sidebar");
         sidebar.setPrefWidth(280);
 
         Label title = new Label("Simple\nStudent\nInformation\nSystem");
-        title.setStyle("-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #F1ECE4;");
+        title.getStyleClass().add("header-title-sidebar");
 
-        Button students = createNavButton("Students");
-        Button programs = createNavButton("Programs");
-        Button colleges = createNavButton("Colleges");
+        Button students = new Button("🎓 Students");
+        students.setMaxWidth(Double.MAX_VALUE);
+        students.getStyleClass().add("nav-button-active");
+
+        Button programs = createNavButton("📄 Programs");
+        Button colleges = createNavButton("🏢 Colleges");
 
         students.setOnAction(e -> mainLayout.setCenter(new Student_Panel().getView()));
         programs.setOnAction(e -> System.out.println("Programs clicked.")); //placeholder
-        colleges.setOnAction(e -> System.out.println("Programs clicked.")); //placeholder
+        colleges.setOnAction(e -> System.out.println("Colleges clicked.")); //placeholder
 
         sidebar.getChildren().addAll(title, students, programs, colleges);
         mainLayout.setLeft(sidebar);
@@ -38,7 +40,6 @@ public class App extends Application {
         mainLayout.setCenter(new Student_Panel().getView());
 
         Scene scene = new Scene (mainLayout, 1200, 800);
-
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setTitle("Student Information System");
@@ -56,5 +57,4 @@ public class App extends Application {
     public static void main(String[] args) {
         Application.launch(args);
     }
-
 }

@@ -6,36 +6,43 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.CsvHandler;
 import model.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student_Panel {
     private String filePath = "src/data/student_data.csv";
+    private TableView<Student> table; // Shared class variable
 
     public Parent getView() {
-        VBox layout = new VBox(20);
+        VBox layout = new VBox(25);
         layout.setPadding(new Insets(30));
 
-        /*header */
+        /* Header */
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
+        header.getStyleClass().add("top-header-bar");
 
         Label title = new Label("Students");
-        title.getStyleClass().add("header-title");
+        title.getStyleClass().add("top-header-title");
 
-        //search
+        // Search
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
         TextField search = new TextField();
         search.setPromptText("Search students...");
-        search.setStyle("-fx-background-radius: 20; -fx-padding: 10;");
+        search.getStyleClass().add("search-bar");
 
-        header. getChildren().addAll(title, spacer, search);
+        header.getChildren().addAll(title, spacer, search);
 
-        //action buttons
+        /* Action Buttons */
         HBox toolbar = new HBox(15);
         Button add = new Button("+ Add a student");
         Button update = new Button("✎ Update student");
@@ -47,23 +54,24 @@ public class Student_Panel {
 
         toolbar.getChildren().addAll(add, update, delete);
 
-        //table
-        TableView<Student> table = new TableView<>();
+        /* Table */
+        table = new TableView<>();
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        VBox.setVgrow(table, Priority.ALWAYS);
 
         TableColumn<Student, String> id = new TableColumn<>("ID No.");
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableColumn<Student, String> first = new TableColumn<>("First Name");
-        first.setCellValueFactory(new PropertyValueFactory<>("first"));
+        first.setCellValueFactory(new PropertyValueFactory<>("firstName")); 
 
         TableColumn<Student, String> last = new TableColumn<>("Last Name");
-        last.setCellValueFactory(new PropertyValueFactory<>("last"));
+        last.setCellValueFactory(new PropertyValueFactory<>("lastName")); 
 
         TableColumn<Student, String> program = new TableColumn<>("Program");
-        program.setCellValueFactory(new PropertyValueFactory<>("program"));
+        program.setCellValueFactory(new PropertyValueFactory<>("programCode"));
 
-        TableColumn<Student, String> year = new TableColumn<>("Year");
+        TableColumn<Student, Integer> year = new TableColumn<>("Year");
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
 
         TableColumn<Student, String> gender = new TableColumn<>("Gender");
@@ -71,23 +79,51 @@ public class Student_Panel {
 
         table.getColumns().addAll(id, first, last, program, year, gender);
 
-        loadData(table);
+        // Call loadData without parameters to use the class variable
+        loadData();
 
+        /* --- ACTION LISTENERS --- */
+        
+        add.setOnAction(e -> showAddOrUpdateDialog(null));
+        
+        update.setOnAction(e -> {
+            Student selected = table.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                showAddOrUpdateDialog(selected);
+            }
+        });
+
+        delete.setOnAction(e -> {
+            Student selected = table.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                showDeleteConfirmation(selected);
+            }
+        });
+
+        table.setRowFactory(tv -> {
+            TableRow<Student> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    showStudentInfoDialog(row.getItem());
+                }
+            });
+            return row;
+        });
+        
         layout.getChildren().addAll(header, toolbar, table);
         return layout;
     }
 
-    private void loadData(TableView<Student> table) {
-    ObservableList<Student> students = FXCollections.observableArrayList();
-    List<String[]> rawData = CsvHandler.readCSV(filePath);
+    // Removed the parameter so it stops confusing VS Code
+    private void loadData() {
+        ObservableList<Student> students = FXCollections.observableArrayList();
+        List<String[]> rawData = CsvHandler.readCSV(filePath);
 
         for (String[] row : rawData) {
-            // Only process if the row has enough columns AND the first column isn't "ID" (header)
             if(row.length >= 6 && !row[0].equalsIgnoreCase("id")) {
                 try {
-                    // .trim() removes hidden spaces that cause parsing errors
                     int yearValue = Integer.parseInt(row[4].trim()); 
-                    Student s = new Student(row[0], row[1], row[2], row[3], yearValue, row[5]);
+                    Student s = new Student(row[0].trim(), row[1].trim(), row[2].trim(), row[3].trim(), yearValue, row[5].trim());
                     students.add(s);
                 } catch (NumberFormatException e) {
                     System.out.println("Skipping invalid row: " + String.join(",", row));
@@ -95,5 +131,199 @@ public class Student_Panel {
             }
         }
         table.setItems(students);
+    }
+
+    private void refreshCSV() {
+        List<String> lines = new ArrayList<>();
+        lines.add("id,firstName,lastName,programCode,year,gender");
+        for (Student s : table.getItems()) {
+            lines.add(s.toCSV());
+        }
+        CsvHandler.overwriteCSV(filePath, lines);
+    }
+
+    /*overlay */
+
+    private void showAddOrUpdateDialog(Student studentToUpdate) {
+        boolean isUpdate = (studentToUpdate != null);
+        
+        Stage modal = new Stage();
+        modal.initModality(Modality.APPLICATION_MODAL);
+        modal.initStyle(StageStyle.UNDECORATED);
+
+        // Container for everything
+        VBox root = new VBox(15);
+        root.getStyleClass().add("modal-overlay");
+        root.setPadding(new Insets(20));
+        root.setAlignment(Pos.TOP_CENTER);
+
+        // Top System Title & Close Button
+        HBox topHeader = new HBox();
+        topHeader.setAlignment(Pos.CENTER_RIGHT);
+        Label systemTitle = new Label("Simple Student Information System");
+        systemTitle.setStyle("-fx-text-fill: #68191F; -fx-font-weight: bold; -fx-font-size: 14px; -fx-font-family: 'Courier New', monospace;");
+        
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        
+        Button closeBtn = new Button("X");
+        closeBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: #68191F; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;");
+        closeBtn.setOnAction(e -> modal.close());
+        
+        topHeader.getChildren().addAll(systemTitle, spacer, closeBtn);
+
+        // Maroon Box
+        VBox maroonBox = new VBox(15);
+        maroonBox.getStyleClass().add("modal-content");
+        maroonBox.setAlignment(Pos.CENTER);
+
+        Label title = new Label(isUpdate ? "Update Student" : "Add Student");
+        title.getStyleClass().add("modal-title");
+
+        maroonBox.getChildren().add(title);
+
+        TextField idField = createLabeledField(maroonBox, "ID Number", isUpdate ? studentToUpdate.getId() : "");
+        TextField firstField = createLabeledField(maroonBox, "First Name", isUpdate ? studentToUpdate.getFirstName() : "");
+        TextField lastField = createLabeledField(maroonBox, "Last Name", isUpdate ? studentToUpdate.getLastName() : "");
+        TextField progField = createLabeledField(maroonBox, "Program", isUpdate ? studentToUpdate.getProgramCode() : "");
+        TextField yearField = createLabeledField(maroonBox, "Year", isUpdate ? String.valueOf(studentToUpdate.getYear()) : "");
+        TextField genderField = createLabeledField(maroonBox, "Gender", isUpdate ? studentToUpdate.getGender() : "");
+
+        Button actionBtn = new Button(isUpdate ? "Update" : "Add");
+        actionBtn.getStyleClass().add("modal-button");
+        VBox.setMargin(actionBtn, new Insets(20, 0, 0, 0));
+
+        actionBtn.setOnAction(e -> {
+            try {
+                String id = idField.getText();
+                String first = firstField.getText();
+                String last = lastField.getText();
+                String prog = progField.getText();
+                int year = Integer.parseInt(yearField.getText());
+                String gender = genderField.getText();
+
+                if (isUpdate) {
+                    studentToUpdate.setId(id);
+                    studentToUpdate.setFirstName(first);
+                    studentToUpdate.setLastName(last);
+                    studentToUpdate.setProgramCode(prog);
+                    studentToUpdate.setYear(year);
+                    studentToUpdate.setGender(gender);
+                    table.refresh();
+                } else {
+                    Student newStudent = new Student(id, first, last, prog, year, gender);
+                    table.getItems().add(newStudent);
+                }
+                refreshCSV();
+                modal.close();
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid year input.");
+            }
+        });
+
+        maroonBox.getChildren().add(actionBtn);
+        root.getChildren().addAll(topHeader, maroonBox);
+        
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        modal.setScene(scene);
+        modal.showAndWait();
+    }
+
+    private TextField createLabeledField(VBox parent, String labelText, String initialValue) {
+        VBox container = new VBox(5);
+        container.setAlignment(Pos.CENTER_LEFT);
+        Label label = new Label(labelText);
+        label.getStyleClass().add("modal-label");
+        TextField field = new TextField(initialValue);
+        field.getStyleClass().add("modal-textfield");
+        container.getChildren().addAll(label, field);
+        
+        parent.getChildren().add(container); 
+        return field;
+    }
+
+    private void showStudentInfoDialog(Student student) {
+        Stage modal = new Stage();
+        modal.initModality(Modality.APPLICATION_MODAL);
+        modal.initStyle(StageStyle.UNDECORATED);
+
+        VBox root = new VBox(15);
+        root.getStyleClass().add("modal-overlay");
+        root.setPadding(new Insets(20));
+        root.setAlignment(Pos.TOP_CENTER);
+
+        HBox topHeader = new HBox();
+        topHeader.setAlignment(Pos.CENTER_RIGHT);
+        Button closeBtn = new Button("X");
+        closeBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: #68191F; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;");
+        closeBtn.setOnAction(e -> modal.close());
+        topHeader.getChildren().add(closeBtn);
+
+        VBox box = new VBox(15);
+        box.getStyleClass().add("modal-content");
+        box.setAlignment(Pos.CENTER);
+
+        Circle profilePic = new Circle(40);
+        profilePic.getStyleClass().add("profile-placeholder");
+
+        Label nameTitle = new Label(student.getLastName() + "\n" + student.getFirstName());
+        nameTitle.getStyleClass().add("modal-title");
+        nameTitle.setStyle("-fx-font-size: 24px; -fx-text-alignment: center;");
+
+        box.getChildren().addAll(profilePic, nameTitle);
+
+        createLabeledField(box, "Program", student.getProgramCode()).setEditable(false);
+        createLabeledField(box, "Year", String.valueOf(student.getYear())).setEditable(false);
+        createLabeledField(box, "College", "[Requires DB Link]").setEditable(false); 
+        createLabeledField(box, "Gender", student.getGender()).setEditable(false);
+
+        root.getChildren().addAll(topHeader, box);
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        modal.setScene(scene);
+        modal.showAndWait();
+    }
+
+    private void showDeleteConfirmation(Student student) {
+        Stage modal = new Stage();
+        modal.initModality(Modality.APPLICATION_MODAL);
+        modal.initStyle(StageStyle.UNDECORATED);
+
+        VBox box = new VBox(20);
+        box.getStyleClass().add("modal-content");
+        box.setAlignment(Pos.CENTER);
+
+        Label prompt = new Label("Are you sure you want to delete\n" + student.getFirstName() + " " + student.getLastName() + "?");
+        prompt.getStyleClass().add("modal-label");
+        prompt.setStyle("-fx-font-size: 18px; -fx-text-alignment: center;");
+
+        HBox btnBox = new HBox(20);
+        btnBox.setAlignment(Pos.CENTER);
+        
+        Button yesBtn = new Button("Yes, Delete");
+        yesBtn.getStyleClass().add("modal-button");
+        yesBtn.setOnAction(e -> {
+            table.getItems().remove(student);
+            refreshCSV();
+            modal.close();
+        });
+
+        Button noBtn = new Button("Cancel");
+        noBtn.getStyleClass().add("modal-button");
+        noBtn.setOnAction(e -> modal.close());
+
+        btnBox.getChildren().addAll(yesBtn, noBtn);
+        box.getChildren().addAll(prompt, btnBox);
+
+        VBox root = new VBox(box);
+        root.getStyleClass().add("modal-overlay");
+        root.setPadding(new Insets(20));
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        modal.setScene(scene);
+        modal.showAndWait();
     }
 }

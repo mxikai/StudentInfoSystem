@@ -3,10 +3,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Run Student System",
+            "name": "App",
             "request": "launch",
             "mainClass": "App",
-            "vmArgs": "--module-path \"lib\" --add-modules javafx.controls,javafx.fxml -Djava.library.path=\"lib\""
+            "projectName": "StudentInfoSystem_f766e8ed"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
         }
     ]
 }
