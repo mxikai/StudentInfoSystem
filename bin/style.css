@@ -108,6 +108,19 @@
     -fx-text-fill: #68191F;
 }
 
+.table-view .table-row-cell:selected {
+    -fx-background-color: #c3bbae;
+    -fx-background-insets: 0;
+}
+
+.table-view .table-row-cell:selected .text {
+    -fx-fill: #68191F;
+}
+
+.table-view .table-row-cell:focused .table-cell:focused {
+    -fx-background-color: transparent;
+}
+
 .modal-overlay {
     -fx-background-color: #F1ECE4;
     -fx-background-radius: 30 30 30 30;
