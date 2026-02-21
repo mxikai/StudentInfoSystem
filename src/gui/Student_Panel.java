@@ -24,7 +24,7 @@ public class Student_Panel {
         VBox layout = new VBox(25);
         layout.setPadding(new Insets(30));
 
-        /* Header */
+        /*header */
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
         header.getStyleClass().add("top-header-bar");
@@ -32,7 +32,7 @@ public class Student_Panel {
         Label title = new Label("Students");
         title.getStyleClass().add("top-header-title");
 
-        // Search
+        //search
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
@@ -42,7 +42,7 @@ public class Student_Panel {
 
         header.getChildren().addAll(title, spacer, search);
 
-        /* Action Buttons */
+        /*action buttons */
         HBox toolbar = new HBox(15);
         Button add = new Button("+ Add a student");
         Button update = new Button("✎ Update student");
@@ -54,7 +54,24 @@ public class Student_Panel {
 
         toolbar.getChildren().addAll(add, update, delete);
 
-        /* Table */
+        /*sort */
+        HBox sortBox = new HBox();
+        sortBox.setAlignment(Pos.CENTER_LEFT);
+        
+        ComboBox<String> sortFilter = new ComboBox<>();
+        // Update the items list:
+        sortFilter.getItems().addAll(
+            "Sort filter ˅", 
+            "ID No. (Asc)", "ID No. (Desc)", 
+            "Last Name (Asc)", "Last Name (Desc)", 
+            "Year (Asc)", "Year (Desc)", 
+            "Gender (Asc)", "Gender (Desc)"
+        );
+        sortFilter.setValue("Sort filter");
+        sortFilter.getStyleClass().add("sort-combo-box");
+        sortBox.getChildren().add(sortFilter);
+
+        /* table */
         table = new TableView<>();
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         VBox.setVgrow(table, Priority.ALWAYS);
@@ -79,11 +96,41 @@ public class Student_Panel {
 
         table.getColumns().addAll(id, first, last, program, year, gender);
 
-        // Call loadData without parameters to use the class variable
         loadData();
 
-        /* --- ACTION LISTENERS --- */
-        
+        /*action listeners */
+        //sort logic
+        sortFilter.setOnAction(e -> {
+            String selected = sortFilter.getValue();
+            table.getSortOrder().clear();
+
+            if (selected.equals("Sort filter")) return;
+
+            //asc or desc
+            TableColumn.SortType sortType = selected.contains("(Desc)") ? 
+                TableColumn.SortType.DESCENDING : TableColumn.SortType.ASCENDING;
+
+            TableColumn<Student, ?> columnToSort = null;
+            
+            if (selected.startsWith("ID No.")) {
+                columnToSort = id;
+            } else if (selected.startsWith("Last Name")) {
+                columnToSort = last;
+            } else if (selected.startsWith("Year")) {
+                columnToSort = year;
+            } else if (selected.startsWith("Gender")) {
+                columnToSort = gender;
+            }
+
+            //automatic
+            if (columnToSort != null) {
+                columnToSort.setSortType(sortType);
+                table.getSortOrder().add(columnToSort);
+                table.sort();
+            }
+        });
+
+        //upd
         add.setOnAction(e -> showAddOrUpdateDialog(null));
         
         update.setOnAction(e -> {
@@ -110,7 +157,7 @@ public class Student_Panel {
             return row;
         });
         
-        layout.getChildren().addAll(header, toolbar, table);
+        layout.getChildren().addAll(header, toolbar, sortBox, table);
         return layout;
     }
 
@@ -143,21 +190,20 @@ public class Student_Panel {
     }
 
     /*overlay */
-
     private void showAddOrUpdateDialog(Student studentToUpdate) {
         boolean isUpdate = (studentToUpdate != null);
         
         Stage modal = new Stage();
         modal.initModality(Modality.APPLICATION_MODAL);
-        modal.initStyle(StageStyle.UNDECORATED);
+        modal.initStyle(StageStyle.TRANSPARENT);
 
-        // Container for everything
+        //overlay
         VBox root = new VBox(15);
         root.getStyleClass().add("modal-overlay");
         root.setPadding(new Insets(20));
         root.setAlignment(Pos.TOP_CENTER);
 
-        // Top System Title & Close Button
+        //title n close
         HBox topHeader = new HBox();
         topHeader.setAlignment(Pos.CENTER_RIGHT);
         Label systemTitle = new Label("Simple Student Information System");
@@ -172,7 +218,7 @@ public class Student_Panel {
         
         topHeader.getChildren().addAll(systemTitle, spacer, closeBtn);
 
-        // Maroon Box
+        //box
         VBox maroonBox = new VBox(15);
         maroonBox.getStyleClass().add("modal-content");
         maroonBox.setAlignment(Pos.CENTER);
@@ -226,6 +272,7 @@ public class Student_Panel {
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         modal.setScene(scene);
         modal.showAndWait();
     }
@@ -246,7 +293,7 @@ public class Student_Panel {
     private void showStudentInfoDialog(Student student) {
         Stage modal = new Stage();
         modal.initModality(Modality.APPLICATION_MODAL);
-        modal.initStyle(StageStyle.UNDECORATED);
+        modal.initStyle(StageStyle.TRANSPARENT);
 
         VBox root = new VBox(15);
         root.getStyleClass().add("modal-overlay");
@@ -282,6 +329,7 @@ public class Student_Panel {
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         modal.setScene(scene);
         modal.showAndWait();
     }
@@ -289,7 +337,7 @@ public class Student_Panel {
     private void showDeleteConfirmation(Student student) {
         Stage modal = new Stage();
         modal.initModality(Modality.APPLICATION_MODAL);
-        modal.initStyle(StageStyle.UNDECORATED);
+        modal.initStyle(StageStyle.TRANSPARENT);
 
         VBox box = new VBox(20);
         box.getStyleClass().add("modal-content");
@@ -302,7 +350,7 @@ public class Student_Panel {
         HBox btnBox = new HBox(20);
         btnBox.setAlignment(Pos.CENTER);
         
-        Button yesBtn = new Button("Yes, Delete");
+        Button yesBtn = new Button("Delete " + student.getFirstName() + " " + student.getLastName());
         yesBtn.getStyleClass().add("modal-button");
         yesBtn.setOnAction(e -> {
             table.getItems().remove(student);
@@ -323,6 +371,7 @@ public class Student_Panel {
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         modal.setScene(scene);
         modal.showAndWait();
     }

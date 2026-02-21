@@ -162,3 +162,56 @@
     -fx-stroke: #A88F8A;
     -fx-stroke-width: 5;
 }
+
+.sort-combo-box {
+    -fx-background-color: #68191F;
+    -fx-background-radius: 20;
+    -fx-padding: 0 10 0 10;
+    -fx-cursor: hand;
+}
+
+.sort-combo-box > .list-cell {
+    -fx-text-fill: #F1ECE4;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+}
+
+.sort-combo-box .arrow {
+    -fx-background-color: #F1ECE4;
+}
+
+.sort-combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5 0 0;
+}
+
+.sort-combo-box .list-view {
+    -fx-background-color: #68191F;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #F1ECE4;
+    -fx-border-width: 1;
+}
+
+.sort-combo-box .list-view .list-cell {
+    -fx-text-fill: #F1ECE4;
+    -fx-font-size: 14px;
+    -fx-padding: 8 10 8 10;
+    -fx-background-color: transparent;
+}
+
+.sort-combo-box .list-view .list-cell:hover,
+.sort-combo-box .list-view .list-cell:filled:selected {
+    -fx-background-color: #4A1216;
+    -fx-text-fill: #F1ECE4;
+}
+
+.table-view .column-header .sort-order {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+}
+
+.table-view .column-header .sort-order .arrow {
+    -fx-shape: null;
+}
