@@ -209,6 +209,24 @@ public class Student_Panel {
             });
             return row;
         });
+
+        /*clear highlight outside table */
+        layout.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
+            javafx.scene.Node target = (javafx.scene.Node) event.getTarget();
+            boolean clickedOnRow = false;
+            
+            while (target != null) {
+                if (target instanceof TableRow) {
+                    clickedOnRow = true;
+                    break;
+                }
+                target = target.getParent();
+            }
+            
+            if (!clickedOnRow) {
+                table.getSelectionModel().clearSelection();
+            }
+        });
         
         layout.getChildren().addAll(header, toolbar, sortBox, table);
         return layout;
@@ -356,7 +374,7 @@ public class Student_Panel {
             String yearText = yearField.getText().trim();
             String gender = genderBox.getValue();
 
-            //id constrains
+            //id constraints
             if (!id.matches("^(201[0-9]|202[0-6])-\\d{4}$")) {
                 showWarningDialog("Invalid ID Format.\nPlease use YYYY-NNNN (Year must be 2010-2026).");
                 return; 
@@ -459,7 +477,7 @@ public class Student_Panel {
 
         createLabeledField(box, "Program", getFullProgramName(student.getProgramCode())).setEditable(false);
         createLabeledField(box, "Year", String.valueOf(student.getYear())).setEditable(false);
-        createLabeledField(box, "College", "[Requires DB Link]").setEditable(false); 
+        createLabeledField(box, "College", getFullCollegeName(student.getProgramCode())).setEditable(false);
         createLabeledField(box, "Gender", student.getGender()).setEditable(false);
 
         root.getChildren().addAll(topHeader, box);
@@ -573,5 +591,29 @@ public class Student_Panel {
             }
         }
         return code;
+    }
+
+    //for college student info
+    private String getFullCollegeName(String progCode) {
+        String targetCollegeCode = "";
+        
+        List<String[]> programs = CsvHandler.readCSV("src/data/program_data.csv");
+        for (String[] row : programs) {
+            if (row.length >= 3 && row[0].equalsIgnoreCase(progCode)) {
+                targetCollegeCode = row[2];
+                break;
+            }
+        }
+
+        if (targetCollegeCode.isEmpty()) return "Unknown College";
+
+        List<String[]> colleges = CsvHandler.readCSV("src/data/college_data.csv");
+        for (String[] row : colleges) {
+            if (row.length >= 2 && row[0].equalsIgnoreCase(targetCollegeCode)) {
+                return row[1];
+            }
+        }
+        
+        return targetCollegeCode; //incase name not found
     }
 }

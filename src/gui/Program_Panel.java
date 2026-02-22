@@ -99,7 +99,6 @@ public class Program_Panel {
                 if (p.getCode().toLowerCase().contains(query) || p.getName().toLowerCase().contains(query)) {
                     table.getSelectionModel().select(p);
                     table.scrollTo(p);
-                    showProgramInfoDialog(p);
                     foundMatch = true;
                     break;
                 }
@@ -124,7 +123,14 @@ public class Program_Panel {
             else if (selected.equals("College (Desc)")) items.sort(Comparator.comparing(Program::getCollege).reversed());
         });
 
-        add.setOnAction(e -> showAddOrUpdateDialog(null));
+        add.setOnAction(e -> {
+            List<String[]> colleges = CsvHandler.readCSV("src/data/college_data.csv");
+            if (colleges.isEmpty() || colleges.size() <=1) {
+                showWarningDialog("Action Blocked.\nYou must create at least one College in the Colleges Tab before you can add a program.");
+            } else {
+                showAddOrUpdateDialog(null);
+            }
+        });
         
         update.setOnAction(e -> {
             Program selected = table.getSelectionModel().getSelectedItem();
@@ -144,6 +150,24 @@ public class Program_Panel {
                 }
             });
             return row;
+        });
+        
+        /*clear highlight outside table */
+        layout.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
+            javafx.scene.Node target = (javafx.scene.Node) event.getTarget();
+            boolean clickedOnRow = false;
+            
+            while (target != null) {
+                if (target instanceof TableRow) {
+                    clickedOnRow = true;
+                    break;
+                }
+                target = target.getParent();
+            }
+            
+            if (!clickedOnRow) {
+                table.getSelectionModel().clearSelection();
+            }
         });
         
         layout.getChildren().addAll(header, toolbar, sortBox, table);
@@ -259,7 +283,36 @@ public class Program_Panel {
         TextField majorField = createLabeledField(maroonBox, "Major (e.g. Computer Science)", defaultMajor);
 
         //college code
-        TextField collegeField = createLabeledField(maroonBox, "College Code (e.g. CCS)", isUpdate ? programToUpdate.getCollege() : "");
+        VBox collegeContainer = new VBox(5);
+        collegeContainer.setAlignment(Pos.CENTER_LEFT);
+        Label collegeLabel = new Label("College Code");
+        collegeLabel.getStyleClass().add("modal-label");
+
+        ComboBox<String> collegeBox = new ComboBox<>();
+        collegeBox.setVisibleRowCount(5);
+
+        List <String[]> collegesList = CsvHandler.readCSV("src/data/college_data.csv");
+        for (String[] row : collegesList) {
+            if (row.length > 0 && !row[0].equalsIgnoreCase("code") && !row[0].equalsIgnoreCase("collegeCode")) {
+                collegeBox.getItems().add(row[0].toUpperCase());
+            }
+        }
+
+        if (isUpdate) {
+            String currentCollege = programToUpdate.getCollege().toUpperCase();
+            if (!collegeBox.getItems().contains(currentCollege)) {
+                collegeBox.getItems().add(currentCollege);
+            }
+            collegeBox.setValue(currentCollege);
+        } else if (!collegeBox.getItems().isEmpty()) {
+            collegeBox.setValue(collegeBox.getItems().get(0));
+        } else {
+            collegeBox.setValue("NO COLLEGES FOUND");
+        }
+        
+        collegeBox.setStyle("-fx-background-color: #F1ECE4; -fx-background-radius: 15; -fx-pref-width: 300px; -fx-font-size: 14px; -fx-padding: 2; -fx-cursor: hand;");
+        collegeContainer.getChildren().addAll(collegeLabel, collegeBox);
+        maroonBox.getChildren().add(collegeContainer);
 
         //action button
         Button actionBtn = new Button(isUpdate ? "Update" : "Add");
@@ -270,7 +323,7 @@ public class Program_Panel {
             String code = codeField.getText().trim().toUpperCase();
             String degree = degreeBox.getValue();
             String major = majorField.getText().trim();
-            String college = collegeField.getText().trim().toUpperCase();
+            String college = collegeBox.getValue();
 
             if (code.isEmpty() || college.isEmpty()) {
                 showWarningDialog("Program Code and College Code are required.");

@@ -5,8 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import gui.Student_Panel;
-import gui.Program_Panel;
+import gui.*;
+
+import java.util.List;
+import model.CsvHandler;
 
 public class App extends Application {
 
@@ -28,8 +30,6 @@ public class App extends Application {
         Button programs = createNavButton("📄 Programs");
         Button colleges = createNavButton("🏢 Colleges");
 
-        programs.getStyleClass().add("nav-button-active");
-
         /*navigation */
         students.setOnAction(e -> {
             mainLayout.setCenter(new Student_Panel().getView());
@@ -42,7 +42,7 @@ public class App extends Application {
         });
 
         colleges.setOnAction(e -> {
-            System.out.println("Colleges clicked."); //placeholder
+            mainLayout.setCenter(new College_Panel().getView()); 
             switchActiveStyle(colleges, students, programs);
         });
 
@@ -50,7 +50,19 @@ public class App extends Application {
         sidebar.getChildren().addAll(title, students, programs, colleges);
         mainLayout.setLeft(sidebar);
 
-        mainLayout.setCenter(new Program_Panel().getView());
+        List<String[]> collegeData = CsvHandler.readCSV("src/data/college_data.csv");
+        List<String[]> programData = CsvHandler.readCSV("src/data/program_data.csv");
+
+        if (collegeData.isEmpty() || collegeData.size() <= 1) {
+            mainLayout.setCenter(new College_Panel().getView());
+            switchActiveStyle(colleges, students, programs);
+        } else if(programData.isEmpty() || programData.size() <= 1) {
+            mainLayout.setCenter(new Program_Panel().getView());
+            switchActiveStyle(programs, students, colleges);
+        } else {
+            mainLayout.setCenter(new Student_Panel().getView());
+            switchActiveStyle(students, colleges, programs);
+        }
 
         Scene scene = new Scene(mainLayout, 1200, 800);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
