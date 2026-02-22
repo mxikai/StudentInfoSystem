@@ -38,6 +38,7 @@ public class Student_Panel {
         TextField search = new TextField();
         search.setPromptText("Search students...");
         search.getStyleClass().add("search-bar");
+        search.setPrefWidth(350);
 
         header.getChildren().addAll(title, spacer, search);
 
@@ -51,6 +52,14 @@ public class Student_Panel {
         update.getStyleClass().add("action-button");
         delete.getStyleClass().add("action-button");
 
+        add.setMaxWidth(Double.MAX_VALUE);
+        update.setMaxWidth(Double.MAX_VALUE);
+        delete.setMaxWidth(Double.MAX_VALUE);
+        
+        HBox.setHgrow(add, Priority.ALWAYS);
+        HBox.setHgrow(update, Priority.ALWAYS);
+        HBox.setHgrow(delete, Priority.ALWAYS);
+
         toolbar.getChildren().addAll(add, update, delete);
 
         /*sort */
@@ -58,7 +67,6 @@ public class Student_Panel {
         sortBox.setAlignment(Pos.CENTER_LEFT);
         
         ComboBox<String> sortFilter = new ComboBox<>();
-        // Update the items list:
         sortFilter.getItems().addAll(
             "Sort filter", 
             "ID No. (Asc)", "ID No. (Desc)", 
@@ -129,8 +137,11 @@ public class Student_Panel {
         search.setOnAction(e -> {
             String query = search.getText().trim().toLowerCase();
             
+            // If search is empty, clear selection and RESET the table order!
             if (query.isEmpty()) {
                 table.getSelectionModel().clearSelection();
+                table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+                loadData(); 
                 return;
             }
 
@@ -138,20 +149,48 @@ public class Student_Panel {
             boolean hasNumbers = query.matches(".*\\d.*");
 
             if (hasNumbers && !isIdFormat) {
-                showWarningDialog("Invalid Search.\nPlease enter a full ID Number (YYYY-NNNN) or a Student Name.");
+                showWarningDialog("Invalid Search.\nPlease enter a full ID Number, Student Name, or Program.");
                 search.clear();
                 return;
             }
 
             if (query.equals("male") || query.equals("female") || query.equals("other") || 
                 query.equals("m") || query.equals("f")) {
-                showWarningDialog("Invalid Search.\nYou can only search by Student Name or ID Number.");
+                showWarningDialog("Invalid Search.\nYou can only search by Student Name, ID Number, or Program.");
                 search.clear();
                 return;
             }
 
+            ObservableList<Student> items = table.getItems();
+            List<Student> programMatches = new ArrayList<>();
+            
+            //program search
+            for (Student s : items) {
+                if (s.getProgramCode().toLowerCase().equals(query)) {
+                    programMatches.add(s);
+                }
+            }
+
+            if (!programMatches.isEmpty()) {
+                items.removeAll(programMatches);
+                items.addAll(0, programMatches);
+                
+                table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                table.getSelectionModel().clearSelection();
+                
+                for (Student s : programMatches) {
+                    table.getSelectionModel().select(s);
+                }
+                
+                table.scrollTo(0);
+                return; 
+            }
+
+            //normal student search
+            table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             boolean foundMatch = false;
-            for (Student s : table.getItems()) {
+            
+            for (Student s : items) {
                 boolean match = false;
                 
                 if (isIdFormat) {
@@ -162,6 +201,7 @@ public class Student_Panel {
                 }
 
                 if (match) {
+                    table.getSelectionModel().clearSelection();
                     table.getSelectionModel().select(s);
                     table.scrollTo(s);
                     showStudentInfoDialog(s);
@@ -214,16 +254,21 @@ public class Student_Panel {
         layout.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
             javafx.scene.Node target = (javafx.scene.Node) event.getTarget();
             boolean clickedOnRow = false;
+            boolean clickedOnButton = false;
             
             while (target != null) {
                 if (target instanceof TableRow) {
                     clickedOnRow = true;
                     break;
                 }
+                if (target instanceof Button) {
+                    clickedOnButton = true;
+                    break;
+                }
                 target = target.getParent();
             }
             
-            if (!clickedOnRow) {
+            if (!clickedOnRow && !clickedOnButton) {
                 table.getSelectionModel().clearSelection();
             }
         });
@@ -335,6 +380,7 @@ public class Student_Panel {
         }
         
         progBox.setStyle("-fx-background-color: #F1ECE4; -fx-background-radius: 15; -fx-pref-width: 300px; -fx-font-size: 14px; -fx-padding: 2; -fx-cursor: hand;");
+        progBox.setVisibleRowCount(5);
         progContainer.getChildren().addAll(progLabel, progBox);
         maroonBox.getChildren().add(progContainer); 
 

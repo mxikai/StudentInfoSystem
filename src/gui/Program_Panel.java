@@ -36,6 +36,7 @@ public class Program_Panel {
         TextField search = new TextField();
         search.setPromptText("Search programs...");
         search.getStyleClass().add("search-bar");
+        search.setPrefWidth(350);
 
         header.getChildren().addAll(title, spacer, search);
 
@@ -48,6 +49,14 @@ public class Program_Panel {
         add.getStyleClass().add("action-button");
         update.getStyleClass().add("action-button");
         delete.getStyleClass().add("action-button");
+
+        add.setMaxWidth(Double.MAX_VALUE);
+        update.setMaxWidth(Double.MAX_VALUE);
+        delete.setMaxWidth(Double.MAX_VALUE);
+        
+        HBox.setHgrow(add, Priority.ALWAYS);
+        HBox.setHgrow(update, Priority.ALWAYS);
+        HBox.setHgrow(delete, Priority.ALWAYS);
 
         toolbar.getChildren().addAll(add, update, delete);
 
@@ -156,20 +165,25 @@ public class Program_Panel {
         layout.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
             javafx.scene.Node target = (javafx.scene.Node) event.getTarget();
             boolean clickedOnRow = false;
+            boolean clickedOnButton = false;
             
             while (target != null) {
                 if (target instanceof TableRow) {
                     clickedOnRow = true;
                     break;
                 }
+                if (target instanceof Button) {
+                    clickedOnButton = true;
+                    break;
+                }
                 target = target.getParent();
             }
             
-            if (!clickedOnRow) {
+            if (!clickedOnRow && !clickedOnButton) {
                 table.getSelectionModel().clearSelection();
             }
         });
-        
+
         layout.getChildren().addAll(header, toolbar, sortBox, table);
         return layout;
     }
@@ -499,7 +513,7 @@ public class Program_Panel {
                     capitalized.append(word.toLowerCase()).append(" ");
                 } else {
                     capitalized.append(Character.toUpperCase(word.charAt(0)))
-                               .append(word.substring(1).toLowerCase()).append(" ");
+                        .append(word.substring(1).toLowerCase()).append(" ");
                 }
             }
         }

@@ -39,6 +39,7 @@ public class College_Panel {
         TextField search = new TextField();
         search.setPromptText("Search colleges...");
         search.getStyleClass().add("search-bar");
+        search.setPrefWidth(350);
 
         header.getChildren().addAll(title, spacer, search);
 
@@ -51,6 +52,14 @@ public class College_Panel {
         add.getStyleClass().add("action-button");
         update.getStyleClass().add("action-button");
         delete.getStyleClass().add("action-button");
+
+        add.setMaxWidth(Double.MAX_VALUE);
+        update.setMaxWidth(Double.MAX_VALUE);
+        delete.setMaxWidth(Double.MAX_VALUE);
+        
+        HBox.setHgrow(add, Priority.ALWAYS);
+        HBox.setHgrow(update, Priority.ALWAYS);
+        HBox.setHgrow(delete, Priority.ALWAYS);
 
         toolbar.getChildren().addAll(add, update, delete);
 
@@ -152,20 +161,25 @@ public class College_Panel {
         layout.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
             javafx.scene.Node target = (javafx.scene.Node) event.getTarget();
             boolean clickedOnRow = false;
+            boolean clickedOnButton = false;
             
             while (target != null) {
                 if (target instanceof TableRow) {
                     clickedOnRow = true;
                     break;
                 }
+                if (target instanceof Button) {
+                    clickedOnButton = true;
+                    break;
+                }
                 target = target.getParent();
             }
             
-            if (!clickedOnRow) {
+            if (!clickedOnRow && !clickedOnButton) {
                 table.getSelectionModel().clearSelection();
             }
         });
-        
+
         layout.getChildren().addAll(header, toolbar, sortBox, table);
         return layout;
     }
