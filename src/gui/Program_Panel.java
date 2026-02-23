@@ -91,7 +91,10 @@ public class Program_Panel {
         collegeCol.setCellValueFactory(new PropertyValueFactory<>("college")); 
 
         table.getColumns().addAll(codeCol, nameCol, collegeCol);
-        table.getColumns().forEach(col -> col.setSortable(false));
+        table.getColumns().forEach(col -> {
+            col.setSortable(false);
+            col.setReorderable(false); 
+        });
 
         loadData();
 
@@ -99,19 +102,57 @@ public class Program_Panel {
         //search logic
         search.setOnAction(e -> {
             String query = search.getText().trim().toLowerCase();
+
+
             if (query.isEmpty()) {
                 table.getSelectionModel().clearSelection();
+                table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+                loadData();
                 return;
             }
+
+            ObservableList<Program> items = table.getItems();
+            List<Program> collegeMatches = new ArrayList<>();
+            
+            //college search
+            for (Program p : items) {
+                if (p.getCollege().toLowerCase().equals(query)) {
+                    collegeMatches.add(p);
+                }
+            }
+
+            if (!collegeMatches.isEmpty()) {
+                items.removeAll(collegeMatches);
+                items.addAll(0, collegeMatches);
+                
+                table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                table.getSelectionModel().clearSelection();
+                
+                for (Program p : collegeMatches) {
+                    table.getSelectionModel().select(p);
+                }
+                
+                table.scrollTo(0);
+                return; 
+            }
+
+            //program search
+            table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             boolean foundMatch = false;
-            for (Program p : table.getItems()) {
-                if (p.getCode().toLowerCase().contains(query) || p.getName().toLowerCase().contains(query)) {
+            
+            for (Program p : items) {
+                boolean match = p.getCode().toLowerCase().contains(query) || 
+                                p.getName().toLowerCase().contains(query);
+
+                if (match) {
+                    table.getSelectionModel().clearSelection();
                     table.getSelectionModel().select(p);
                     table.scrollTo(p);
                     foundMatch = true;
                     break;
                 }
             }
+
             if (!foundMatch) {
                 showWarningDialog("No program found matching: " + search.getText());
                 search.clear();
@@ -507,11 +548,21 @@ public class Program_Panel {
         if (str == null || str.isEmpty()) return str;
         String[] words = str.split("\\s+");
         StringBuilder capitalized = new StringBuilder();
+        
         for (String word : words) {
             if (word.length() > 0) {
                 if (word.equalsIgnoreCase("in") || word.equalsIgnoreCase("of") || word.equalsIgnoreCase("and")) {
                     capitalized.append(word.toLowerCase()).append(" ");
+                } else if (word.startsWith("(")) {
+                    //allow parenthesis
+                    capitalized.append("(");
+                    if (word.length() > 1) {
+                        capitalized.append(Character.toUpperCase(word.charAt(1)))
+                            .append(word.substring(2).toLowerCase());
+                    }
+                    capitalized.append(" ");
                 } else {
+                    //normal capitalization
                     capitalized.append(Character.toUpperCase(word.charAt(0)))
                         .append(word.substring(1).toLowerCase()).append(" ");
                 }

@@ -89,8 +89,10 @@ public class College_Panel {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("collegeName")); 
 
         table.getColumns().addAll(codeCol, nameCol);
-        
-        table.getColumns().forEach(col -> col.setSortable(false));
+        table.getColumns().forEach(col -> {
+            col.setSortable(false);
+            col.setReorderable(false); 
+        });
 
         loadData();
 

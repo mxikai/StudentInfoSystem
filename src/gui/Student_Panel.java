@@ -102,7 +102,10 @@ public class Student_Panel {
         gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
         table.getColumns().addAll(id, first, last, program, year, gender);
-        table.getColumns().forEach(col -> col.setSortable(false));
+        table.getColumns().forEach(col -> {
+            col.setSortable(false);
+            col.setReorderable(false); 
+        });
 
         loadData();
 
