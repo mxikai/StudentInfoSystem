@@ -162,7 +162,7 @@ public class Program_Panel {
         //sort logic
         sortFilter.setOnAction(e -> {
             String selected = sortFilter.getValue();
-            if (selected == null || selected.equals("Sort filter ˅")) return;
+            if (selected == null || selected.equals("Sort filter")) return;
 
             ObservableList<Program> items = table.getItems();
             if (selected.equals("Program Code (Asc)")) items.sort(Comparator.comparing(Program::getCode));
@@ -232,9 +232,20 @@ public class Program_Panel {
     private void loadData() {
         ObservableList<Program> programs = FXCollections.observableArrayList();
         List<String[]> rawData = CsvHandler.readCSV(filePath);
+        
         for (String[] row : rawData) {
             if(row.length >= 3 && !row[0].equalsIgnoreCase("code")) {
-                Program p = new Program(row[0].trim(), row[1].trim(), row[2].trim());
+                String code = row[0].trim();
+                
+                String college = row[row.length - 1].trim(); 
+                
+                StringBuilder nameBuilder = new StringBuilder(row[1].trim());
+                //stitch the whole name together when separated by commas
+                for (int i = 2; i < row.length - 1; i++) {
+                    nameBuilder.append(", ").append(row[i].trim());
+                }
+                
+                Program p = new Program(code, nameBuilder.toString(), college);
                 programs.add(p);
             }
         }
@@ -380,16 +391,32 @@ public class Program_Panel {
             String major = majorField.getText().trim();
             String college = collegeBox.getValue();
 
-            if (code.isEmpty() || college.isEmpty()) {
-                showWarningDialog("Program Code and College Code are required.");
+            if (major.matches(".*\\d.*") || code.matches(".*\\d.*")) {
+                showWarningDialog("Invalid Name.\nExtended Name and Code cannot contain numbers.");
                 return;
             }
 
+            //combine extended name
             String combinedName = degree;
             if (!major.isEmpty()) {
                 combinedName = degree + " in " + capitalizeWords(major);
             }
 
+            //no duplicate
+            for (Program p : table.getItems()) {
+                if (isUpdate && p == programToUpdate) continue;
+
+                if (p.getCode().equalsIgnoreCase(code)) {
+                    showWarningDialog("Duplicate Entry.\nA Program with the code '" + code + "' already exists.");
+                    return;
+                }
+                if (p.getName().equalsIgnoreCase(combinedName)) {
+                    showWarningDialog("Duplicate Entry.\nThe Program '" + combinedName + "' already exists.");
+                    return;
+                }
+            }
+
+            //update
             if (isUpdate) {
                 programToUpdate.setCode(code);
                 programToUpdate.setName(combinedName);
@@ -488,6 +515,25 @@ public class Program_Panel {
         yesBtn.setOnAction(e -> {
             table.getItems().remove(program);
             refreshCSV();
+            
+            //set null if there are students in program 
+            List<String[]> students = CsvHandler.readCSV("src/data/student_data.csv");
+            List<String> updatedStudentLines = new ArrayList<>();
+            updatedStudentLines.add("id,firstName,lastName,programCode,year,gender");
+            boolean changed = false;
+            
+            for (String[] row : students) {
+                if (row.length >= 6 && !row[0].equalsIgnoreCase("id")) {
+                    if (row[3].equalsIgnoreCase(program.getCode())) {
+                        row[3] = "N/A";
+                        changed = true;
+                    }
+                    updatedStudentLines.add(String.join(",", row));
+                }
+            }
+            if (changed) {
+                CsvHandler.overwriteCSV("src/data/student_data.csv", updatedStudentLines);
+            }
             modal.close();
         });
 

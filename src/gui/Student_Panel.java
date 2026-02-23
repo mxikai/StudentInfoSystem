@@ -71,6 +71,7 @@ public class Student_Panel {
             "Sort filter", 
             "ID No. (Asc)", "ID No. (Desc)", 
             "Last Name (Asc)", "Last Name (Desc)", 
+            "Program (Asc)", "Program (Desc)",
             "Year (Asc)", "Year (Desc)", 
             "Gender (Asc)", "Gender (Desc)"
         );
@@ -125,6 +126,10 @@ public class Student_Panel {
                 items.sort(Comparator.comparing(Student::getLastName));
             } else if (selected.equals("Last Name (Desc)")) {
                 items.sort(Comparator.comparing(Student::getLastName).reversed());
+            } else if (selected.equals("Program (Asc)")) {
+                items.sort(Comparator.comparing(Student::getProgramCode));
+            } else if (selected.equals("Program (Desc)")) {
+                items.sort(Comparator.comparing(Student::getProgramCode).reversed());
             } else if (selected.equals("Year (Asc)")) {
                 items.sort(Comparator.comparingInt(Student::getYear));
             } else if (selected.equals("Year (Desc)")) {
@@ -140,10 +145,9 @@ public class Student_Panel {
         search.setOnAction(e -> {
             String query = search.getText().trim().toLowerCase();
             
-            // If search is empty, clear selection and RESET the table order!
+            //reset table order if empty
             if (query.isEmpty()) {
                 table.getSelectionModel().clearSelection();
-                table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
                 loadData(); 
                 return;
             }
@@ -237,19 +241,45 @@ public class Student_Panel {
         });
 
         delete.setOnAction(e -> {
-            Student selected = table.getSelectionModel().getSelectedItem();
-            if (selected != null) {
-                showDeleteConfirmation(selected);
+            //every highlighted student
+            List<Student> selectedItems = new ArrayList<>(table.getSelectionModel().getSelectedItems());
+            
+            if (!selectedItems.isEmpty()) {
+                showDeleteConfirmation(selectedItems);
             }
         });
 
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         table.setRowFactory(tv -> {
             TableRow<Student> row = new TableRow<>();
+            
+            //double click for info
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     showStudentInfoDialog(row.getItem());
                 }
             });
+
+            //drag selection
+            row.setOnDragDetected(event -> {
+                if (!row.isEmpty()) {
+                    row.startFullDrag();
+                    //clear selection if not holding down ctrl or shift
+                    if (!event.isControlDown() && !event.isShiftDown()) {
+                        table.getSelectionModel().clearSelection();
+                    }
+                    table.getSelectionModel().select(row.getIndex());
+                }
+            });
+
+            //highlight
+            row.setOnMouseDragEntered(event -> {
+                if (!row.isEmpty()) {
+                    table.getSelectionModel().select(row.getIndex());
+                }
+            });
+
             return row;
         });
 
@@ -424,13 +454,29 @@ public class Student_Panel {
             String gender = genderBox.getValue();
 
             //id constraints
-            if (!id.matches("^(201[0-9]|202[0-6])-\\d{4}$")) {
+            if (!id.matches("^(201[0-9]|202[0-6])-(?!0000)\\d{4}$")) {
                 showWarningDialog("Invalid ID Format.\nPlease use YYYY-NNNN (Year must be 2010-2026).");
                 return; 
             }
 
+            //no duplicate student id
+            for (Student s : table.getItems()) {
+                if (isUpdate && s == studentToUpdate) continue;
+
+                if (s.getId().equalsIgnoreCase(id)) {
+                    showWarningDialog("Duplicate Entry.\nA Student with the ID '" + id + "' already exists.");
+                    return;
+                }
+            }
+
             if (first.isEmpty() || last.isEmpty()) {
                 showWarningDialog("Name fields cannot be empty.");
+                return;
+            }
+
+            //no symbols and numbers but allows space and hyphen
+            if (!first.matches("^[a-zA-Z \\-ñÑ]+$") || !last.matches("^[a-zA-Z \\-ñÑ]+$")) {
+                showWarningDialog("Invalid Name.\nFirst and Last names can only contain letters, spaces, and hyphens.");
                 return;
             }
 
@@ -538,7 +584,8 @@ public class Student_Panel {
         modal.showAndWait();
     }
 
-    private void showDeleteConfirmation(Student student) {
+    //delete confirmation pop up
+    private void showDeleteConfirmation(List<Student> studentsToDelete) {
         Stage modal = new Stage();
         modal.initModality(Modality.APPLICATION_MODAL);
         modal.initStyle(StageStyle.TRANSPARENT);
@@ -547,17 +594,26 @@ public class Student_Panel {
         box.getStyleClass().add("modal-content");
         box.setAlignment(Pos.CENTER);
 
-        Label prompt = new Label("Are you sure you want to delete\n" + student.getFirstName() + " " + student.getLastName() + "?");
+        //text for delete confirmation
+        String promptText;
+        if (studentsToDelete.size() == 1) {
+            promptText = "Are you sure you want to delete\n" + studentsToDelete.get(0).getFirstName() + " " + studentsToDelete.get(0).getLastName() + "?";
+        } else {
+            promptText = "Are you sure you want to delete\n" + studentsToDelete.size() + " selected students?";
+        }
+
+        Label prompt = new Label(promptText);
         prompt.getStyleClass().add("modal-label");
         prompt.setStyle("-fx-font-size: 18px; -fx-text-alignment: center;");
 
         HBox btnBox = new HBox(20);
         btnBox.setAlignment(Pos.CENTER);
         
-        Button yesBtn = new Button("Delete " + student.getId());
+        Button yesBtn = new Button("Delete");
         yesBtn.getStyleClass().add("modal-button");
         yesBtn.setOnAction(e -> {
-            table.getItems().remove(student);
+            //delete multiple
+            table.getItems().removeAll(studentsToDelete);
             refreshCSV();
             modal.close();
         });
@@ -663,6 +719,6 @@ public class Student_Panel {
             }
         }
         
-        return targetCollegeCode; //incase name not found
+        return targetCollegeCode; //in case name not found
     }
 }

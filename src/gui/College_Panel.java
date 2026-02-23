@@ -96,7 +96,7 @@ public class College_Panel {
 
         loadData();
 
-        /*action listenres */
+        /*action listeners */
         search.setOnAction(e -> {
             String query = search.getText().trim().toLowerCase();
             if (query.isEmpty()) {
@@ -189,9 +189,18 @@ public class College_Panel {
     private void loadData() {
         ObservableList<College> colleges = FXCollections.observableArrayList();
         List<String[]> rawData = CsvHandler.readCSV(filePath);
+        
         for (String[] row : rawData) {
             if(row.length >= 2 && !row[0].equalsIgnoreCase("code") && !row[0].equalsIgnoreCase("collegeCode")) {
-                College c = new College(row[0].trim(), row[1].trim());
+                String code = row[0].trim();
+                
+                StringBuilder nameBuilder = new StringBuilder(row[1].trim());
+                //stitching inputs with commas together
+                for (int i = 2; i < row.length; i++) {
+                    nameBuilder.append(", ").append(row[i].trim());
+                }
+                
+                College c = new College(code, nameBuilder.toString());
                 colleges.add(c);
             }
         }
@@ -250,11 +259,27 @@ public class College_Panel {
             String code = codeField.getText().trim().toUpperCase();
             String name = capitalizeWords(nameField.getText().trim());
 
-            if (code.isEmpty() || name.isEmpty()) {
-                showWarningDialog("Both College Code and College Name are required.");
+            //no numbers
+            if (name.matches(".*\\d.*") || code.matches(".*\\d.*")) {
+                showWarningDialog("Invalid Name.\nCollege Name and Code cannot contain numbers.");
                 return;
             }
 
+            //prevent duplicates
+            for (College c : table.getItems()) {
+                if (isUpdate && c == collegeToUpdate) continue;
+
+                if (c.getCollegeCode().equalsIgnoreCase(code)) {
+                    showWarningDialog("Duplicate Entry.\nA College with the code '" + code + "' already exists.");
+                    return;
+                }
+                if (c.getCollegeName().equalsIgnoreCase(name)) {
+                    showWarningDialog("Duplicate Entry.\nThe '" + name + "' already exists.");
+                    return;
+                }
+            }
+
+            //update
             if (isUpdate) {
                 collegeToUpdate.setCollegeCode(code);
                 collegeToUpdate.setCollegeName(name);
@@ -351,6 +376,25 @@ public class College_Panel {
         yesBtn.setOnAction(e -> {
             table.getItems().remove(college);
             refreshCSV();
+
+            //set null if deleted college
+            List<String[]> programs = CsvHandler.readCSV("src/data/program_data.csv");
+            List<String> updatedProgramLines = new ArrayList<>();
+            updatedProgramLines.add("code,name,college");
+            boolean changed = false;
+
+            for (String[] row : programs) {
+                if (row.length >= 3 && !row[0].equalsIgnoreCase("code")) {
+                    if (row[2].equalsIgnoreCase(college.getCollegeCode())) {
+                        row[2] = "N/A";
+                        changed = true;
+                    }
+                    updatedProgramLines.add(String.join(",", row));
+                }
+            }
+            if (changed) {
+                CsvHandler.overwriteCSV("src/data/program_data.csv", updatedProgramLines);
+            }
             modal.close();
         });
 

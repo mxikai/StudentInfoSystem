@@ -9,3 +9,5 @@ Key Features:
   -  Allows the user to input and create Colleges, Programs, and then Student Information.
   -  Select the row of information you wish to delete/update.
   -  Double click the row of information to see the extended information.
+  -  Only available in the Students Tab, you can drag and select multiple students ONLY FOR
+     BULK DELETION.
