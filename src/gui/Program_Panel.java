@@ -417,15 +417,41 @@ public class Program_Panel {
             }
 
             //update
+            // Update
             if (isUpdate) {
+                String oldCode = programToUpdate.getCode();
+                
                 programToUpdate.setCode(code);
                 programToUpdate.setName(combinedName);
                 programToUpdate.setCollege(college);
                 table.refresh();
+                
+                if (!oldCode.equalsIgnoreCase(code)) {
+                    List<String[]> students = CsvHandler.readCSV("src/data/student_data.csv");
+                    List<String> updatedStudentLines = new ArrayList<>();
+                    updatedStudentLines.add("id,firstName,lastName,programCode,year,gender");
+                    boolean changed = false;
+                    
+                    for (String[] row : students) {
+                        if (row.length >= 6 && !row[0].equalsIgnoreCase("id")) {
+                            if (row[3].equalsIgnoreCase(oldCode)) {
+                                row[3] = code;
+                                changed = true;
+                            }
+                            updatedStudentLines.add(String.join(",", row));
+                        }
+                    }
+                    // Save the updated students to the CSV
+                    if (changed) {
+                        CsvHandler.overwriteCSV("src/data/student_data.csv", updatedStudentLines);
+                    }
+                }
+                
             } else {
                 Program newProgram = new Program(code, combinedName, college);
                 table.getItems().add(newProgram);
             }
+
             refreshCSV();
             modal.close();
         });

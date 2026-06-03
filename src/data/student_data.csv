@@ -1,7 +1,6 @@
 id,firstName,lastName,programCode,year,gender
-2024-1008,Melchora,Aquino,BEEDENG,1,Female
-2023-1023,Trinidad,Tecson,BEEDENG,2,Female
-2024-1040,Jessica,Hernandez,BEEDENG,1,Female
+2024-1009,Melchora,Aquino,BEEDENG,2,Female
+2024-1040,Jessica,Hernandez,BSSTAT,1,Female
 2023-1059,Johnathan,Robinson,BEEDENG,2,Male
 2022-1074,Heather,Hall,BEEDENG,3,Female
 2024-1096,Kelly,Gutierrez,BEEDENG,1,Female
@@ -107,3 +106,1003 @@ id,firstName,lastName,programCode,year,gender
 2024-1072,Alexis,Nelson,BSACC,1,Female
 2023-1083,Richard,Turner,BSACC,2,Male
 2022-1094,Brianna,Cook,BSACC,3,Female
+2024-9999,Kate Mikaelur,Bololol,BSIS,2,Female
+2025-2001,Liam,Smith,BSCA,1,Male
+2024-2002,Olivia,Johnson,BSCS,2,Female
+2023-2003,Noah,Williams,BSIT,3,Male
+2022-2004,Emma,Brown,BSSTAT,4,Female
+2021-2005,Oliver,Jones,BSBIO (MICROBIO),4,Male
+2026-2006,Ava,Garcia,BSBIO (MARINE),1,Female
+2020-2007,Elijah,Miller,BSHM,4,Male
+2019-2008,Sophia,Davis,BSACC,4,Female
+2018-2009,James,Rodriguez,BSBA (BE),4,Male
+2017-2010,Isabella,Martinez,BSEDBIO,4,Female
+2016-2011,William,Hernandez,BSEDCHEM,4,Male
+2015-2012,Mia,Lopez,BSEDMATH,4,Female
+2014-2013,Benjamin,Gonzalez,BSIS,4,Male
+2013-2014,Charlotte,Wilson,BEEDENG,4,Female
+2012-2015,Lucas,Anderson,BSCA,4,Male
+2025-2016,Amelia,Thomas,BSCS,2,Female
+2024-2017,Henry,Taylor,BSIT,3,Male
+2023-2018,Harper,Moore,BSSTAT,4,Female
+2022-2019,Theodore,Jackson,BSBIO (MICROBIO),1,Male
+2021-2020,Evelyn,Martin,BSBIO (MARINE),2,Female
+2026-2021,Jack,Lee,BSHM,1,Male
+2020-2022,Abigail,Perez,BSACC,3,Female
+2019-2023,Alexander,Thompson,BSBA (BE),4,Male
+2018-2024,Emily,White,BSEDBIO,4,Female
+2017-2025,Levi,Harris,BSEDCHEM,4,Male
+2016-2026,Elizabeth,Sanchez,BSEDMATH,4,Female
+2015-2027,Mateo,Clark,BSIS,4,Male
+2014-2028,Mila,Ramirez,BEEDENG,4,Female
+2013-2029,Daniel,Lewis,BSCA,4,Male
+2012-2030,Ella,Robinson,BSCS,4,Female
+2025-2031,Michael,Walker,BSIT,1,Male
+2024-2032,Avery,Young,BSSTAT,2,Female
+2023-2033,Mason,Allen,BSBIO (MICROBIO),3,Male
+2022-2034,Sofia,King,BSBIO (MARINE),4,Female
+2021-2035,Sebastian,Wright,BSHM,4,Male
+2026-2036,Camila,Scott,BSACC,1,Female
+2020-2037,Ethan,Torres,BSBA (BE),4,Male
+2019-2038,Aria,Nguyen,BSEDBIO,4,Female
+2018-2039,Logan,Hill,BSEDCHEM,4,Male
+2017-2040,Scarlett,Flores,BSEDMATH,4,Female
+2016-2041,Owen,Green,BSIS,4,Male
+2015-2042,Victoria,Adams,BEEDENG,4,Female
+2014-2043,Samuel,Nelson,BSCA,4,Male
+2013-2044,Madison,Baker,BSCS,4,Female
+2012-2045,Jacob,Hall,BSIT,4,Male
+2025-2046,Luna,Rivera,BSSTAT,1,Female
+2024-2047,Asher,Campbell,BSBIO (MICROBIO),2,Male
+2023-2048,Grace,Mitchell,BSBIO (MARINE),3,Female
+2022-2049,Aiden,Carter,BSHM,4,Male
+2021-2050,Chloe,Roberts,BSACC,4,Female
+2026-2051,John,Gomez,BSBA (BE),1,Male
+2020-2052,Penelope,Phillips,BSEDBIO,4,Female
+2019-2053,Joseph,Evans,BSEDCHEM,4,Male
+2018-2054,Layla,Turner,BSEDMATH,4,Female
+2017-2055,Wyatt,Diaz,BSIS,4,Male
+2016-2056,Riley,Parker,BEEDENG,4,Female
+2015-2057,David,Cruz,BSCA,4,Male
+2014-2058,Zoey,Edwards,BSCS,4,Female
+2013-2059,Leo,Collins,BSIT,4,Male
+2012-2060,Nora,Reyes,BSSTAT,4,Female
+2025-2061,Luke,Stewart,BSBIO (MICROBIO),2,Male
+2024-2062,Lily,Morris,BSBIO (MARINE),3,Female
+2023-2063,Julian,Morales,BSHM,4,Male
+2022-2064,Eleanor,Murphy,BSACC,4,Female
+2021-2065,Hudson,Cook,BSBA (BE),4,Male
+2026-2066,Hannah,Rogers,BSEDBIO,1,Female
+2020-2067,Grayson,Gutierrez,BSEDCHEM,4,Male
+2019-2068,Lillian,Ortiz,BSEDMATH,4,Female
+2018-2069,Matthew,Morgan,BSIS,4,Male
+2017-2070,Addison,Cooper,BEEDENG,4,Female
+2016-2071,Ezra,Peterson,BSCA,4,Male
+2015-2072,Aubrey,Bailey,BSCS,4,Female
+2014-2073,Gabriel,Reed,BSIT,4,Male
+2013-2074,Ellie,Kelly,BSSTAT,4,Female
+2012-2075,Carter,Howard,BSBIO (MICROBIO),4,Male
+2025-2076,Stella,Ramos,BSBIO (MARINE),1,Female
+2024-2077,Isaac,Kim,BSHM,2,Male
+2023-2078,Natalie,Cox,BSACC,3,Female
+2022-2079,Jayden,Ward,BSBA (BE),4,Male
+2021-2080,Zoe,Richardson,BSEDBIO,4,Female
+2026-2081,Luca,Watson,BSEDCHEM,1,Male
+2020-2082,Leah,Brooks,BSEDMATH,4,Female
+2019-2083,Lincoln,Chavez,BSIS,4,Male
+2018-2084,Hazel,Wood,BEEDENG,4,Female
+2017-2085,Dylan,James,BSCA,4,Male
+2016-2086,Violet,Bennett,BSCS,4,Female
+2015-2087,Nathan,Gray,BSIT,4,Male
+2014-2088,Aurora,Mendoza,BSSTAT,4,Female
+2013-2089,Caleb,Ruiz,BSBIO (MICROBIO),4,Male
+2012-2090,Savannah,Hughes,BSBIO (MARINE),4,Female
+2025-2091,Ryan,Price,BSHM,2,Male
+2024-2092,Audrey,Alvarez,BSACC,3,Female
+2023-2093,Asher,Castillo,BSBA (BE),4,Male
+2022-2094,Brooklyn,Sanders,BSEDBIO,4,Female
+2021-2095,Miles,Patel,BSEDCHEM,4,Male
+2026-2096,Bella,Myers,BSEDMATH,1,Female
+2020-2097,Thomas,Long,BSIS,4,Male
+2019-2098,Claire,Ross,BEEDENG,4,Female
+2018-2099,Leo,Foster,BSCA,4,Male
+2017-2100,Skylar,Jimenez,BSCS,4,Female
+2012-3001,James,Smith,BSCA,1,Male
+2013-3002,Mary,Johnson,BSCS,2,Female
+2014-3003,John,Williams,BSIT,3,Male
+2015-3004,Patricia,Brown,BSSTAT,4,Female
+2016-3005,Robert,Jones,BSBIO (MICROBIO),1,Male
+2017-3006,Jennifer,Garcia,BSBIO (MARINE),2,Female
+2018-3007,Michael,Miller,BSHM,3,Male
+2019-3008,Linda,Davis,BSACC,4,Female
+2020-3009,William,Rodriguez,BSBA (BE),1,Male
+2021-3010,Elizabeth,Martinez,BSEDBIO,2,Female
+2022-3011,David,Hernandez,BSEDCHEM,3,Male
+2023-3012,Barbara,Lopez,BSEDMATH,4,Female
+2024-3013,Richard,Gonzalez,BSIS,1,Male
+2025-3014,Susan,Wilson,BEEDENG,2,Female
+2026-3015,Joseph,Anderson,BSCA,3,Male
+2012-3016,Jessica,Thomas,BSCS,4,Female
+2013-3017,Thomas,Taylor,BSIT,1,Male
+2014-3018,Sarah,Moore,BSSTAT,2,Female
+2015-3019,Charles,Jackson,BSBIO (MICROBIO),3,Male
+2016-3020,Karen,Martin,BSBIO (MARINE),4,Female
+2017-3021,Christopher,Lee,BSHM,1,Male
+2018-3022,Lisa,Perez,BSACC,2,Female
+2019-3023,Daniel,Thompson,BSBA (BE),3,Male
+2020-3024,Nancy,White,BSEDBIO,4,Female
+2021-3025,Matthew,Harris,BSEDCHEM,1,Male
+2022-3026,Betty,Sanchez,BSEDMATH,2,Female
+2023-3027,Anthony,Clark,BSIS,3,Male
+2024-3028,Margaret,Ramirez,BEEDENG,4,Female
+2025-3029,Mark,Lewis,BSCA,1,Male
+2026-3030,Sandra,Robinson,BSCS,2,Female
+2012-3031,Donald,Walker,BSIT,3,Male
+2013-3032,Ashley,Young,BSSTAT,4,Female
+2014-3033,Steven,Allen,BSBIO (MICROBIO),1,Male
+2015-3034,Kimberly,King,BSBIO (MARINE),2,Female
+2016-3035,Paul,Wright,BSHM,3,Male
+2017-3036,Emily,Scott,BSACC,4,Female
+2018-3037,Andrew,Torres,BSBA (BE),1,Male
+2019-3038,Donna,Nguyen,BSEDBIO,2,Female
+2020-3039,Joshua,Hill,BSEDCHEM,3,Male
+2021-3040,Michelle,Flores,BSEDMATH,4,Female
+2022-3041,Kenneth,Green,BSIS,1,Male
+2023-3042,Carol,Adams,BEEDENG,2,Female
+2024-3043,Kevin,Nelson,BSCA,3,Male
+2025-3044,Amanda,Baker,BSCS,4,Female
+2026-3045,Brian,Hall,BSIT,1,Male
+2012-3046,Melissa,Rivera,BSSTAT,2,Female
+2013-3047,George,Campbell,BSBIO (MICROBIO),3,Male
+2014-3048,Deborah,Mitchell,BSBIO (MARINE),4,Female
+2015-3049,Timothy,Carter,BSHM,1,Male
+2016-3050,Stephanie,Roberts,BSACC,2,Female
+2017-3051,Ronald,Gomez,BSBA (BE),3,Male
+2018-3052,Rebecca,Phillips,BSEDBIO,4,Female
+2019-3053,Edward,Evans,BSEDCHEM,1,Male
+2020-3054,Sharon,Turner,BSEDMATH,2,Female
+2021-3055,Jason,Diaz,BSIS,3,Male
+2022-3056,Laura,Parker,BEEDENG,4,Female
+2023-3057,Jeffrey,Cruz,BSCA,1,Male
+2024-3058,Cynthia,Edwards,BSCS,2,Female
+2025-3059,Ryan,Collins,BSIT,3,Male
+2026-3060,Kathleen,Reyes,BSSTAT,4,Female
+2012-3061,Jacob,Stewart,BSBIO (MICROBIO),1,Male
+2013-3062,Amy,Morris,BSBIO (MARINE),2,Female
+2014-3063,Gary,Morales,BSHM,3,Male
+2015-3064,Shirley,Murphy,BSACC,4,Female
+2016-3065,Nicholas,Cook,BSBA (BE),1,Male
+2017-3066,Angela,Rogers,BSEDBIO,2,Female
+2018-3067,Eric,Gutierrez,BSEDCHEM,3,Male
+2019-3068,Helen,Ortiz,BSEDMATH,4,Female
+2020-3069,Jonathan,Morgan,BSIS,1,Male
+2021-3070,Anna,Cooper,BEEDENG,2,Female
+2022-3071,Stephen,Peterson,BSCA,3,Male
+2023-3072,Brenda,Bailey,BSCS,4,Female
+2024-3073,Larry,Reed,BSIT,1,Male
+2025-3074,Pamela,Kelly,BSSTAT,2,Female
+2026-3075,Justin,Howard,BSBIO (MICROBIO),3,Male
+2012-3076,Nicole,Ramos,BSBIO (MARINE),4,Female
+2013-3077,Scott,Kim,BSHM,1,Male
+2014-3078,Emma,Cox,BSACC,2,Female
+2015-3079,Brandon,Ward,BSBA (BE),3,Male
+2016-3080,Samantha,Richardson,BSEDBIO,4,Female
+2017-3081,Benjamin,Watson,BSEDCHEM,1,Male
+2018-3082,Katherine,Brooks,BSEDMATH,2,Female
+2019-3083,Samuel,Chavez,BSIS,3,Male
+2020-3084,Christine,Wood,BEEDENG,4,Female
+2021-3085,Gregory,James,BSCA,1,Male
+2022-3086,Debra,Bennett,BSCS,2,Female
+2023-3087,Alexander,Gray,BSIT,3,Male
+2024-3088,Rachel,Mendoza,BSSTAT,4,Female
+2025-3089,Patrick,Ruiz,BSBIO (MICROBIO),1,Male
+2026-3090,Catherine,Hughes,BSBIO (MARINE),2,Female
+2012-3091,Frank,Price,BSHM,3,Male
+2013-3092,Carolyn,Alvarez,BSACC,4,Female
+2014-3093,Raymond,Castillo,BSBA (BE),1,Male
+2015-3094,Janet,Sanders,BSEDBIO,2,Female
+2016-3095,Jack,Patel,BSEDCHEM,3,Male
+2017-3096,Ruth,Myers,BSEDMATH,4,Female
+2018-3097,Dennis,Long,BSIS,1,Male
+2019-3098,Maria,Ross,BEEDENG,2,Female
+2020-3099,Jerry,Foster,BSCA,3,Male
+2021-3100,Heather,Jimenez,BSCS,4,Female
+2022-3101,Tyler,Powell,BSIT,1,Male
+2023-3102,Diane,Jenkins,BSSTAT,2,Female
+2024-3103,Aaron,Perry,BSBIO (MICROBIO),3,Male
+2025-3104,Virginia,Russell,BSBIO (MARINE),4,Female
+2026-3105,Jose,Sullivan,BSHM,1,Male
+2012-3106,Julie,Bell,BSACC,2,Female
+2013-3107,Adam,Coleman,BSBA (BE),3,Male
+2014-3108,Joyce,Butler,BSEDBIO,4,Female
+2015-3109,Nathan,Henderson,BSEDCHEM,1,Male
+2016-3110,Victoria,Barnes,BSEDMATH,2,Female
+2017-3111,Henry,Gonzales,BSIS,3,Male
+2018-3112,Olivia,Fisher,BEEDENG,4,Female
+2019-3113,Douglas,Vasquez,BSCA,1,Male
+2020-3114,Kelly,Simmons,BSCS,2,Female
+2021-3115,Zachary,Romero,BSIT,3,Male
+2022-3116,Christina,Jordan,BSSTAT,4,Female
+2023-3117,Peter,Patterson,BSBIO (MICROBIO),1,Male
+2024-3118,Lauren,Alexander,BSBIO (MARINE),2,Female
+2025-3119,Kyle,Hamilton,BSHM,3,Male
+2026-3120,Joan,Graham,BSACC,4,Female
+2012-3121,Walter,Reynolds,BSBA (BE),1,Male
+2013-3122,Evelyn,Griffin,BSEDBIO,2,Female
+2014-3123,Ethan,Wallace,BSEDCHEM,3,Male
+2015-3124,Judith,Moreno,BSEDMATH,4,Female
+2016-3125,Jeremy,West,BSIS,1,Male
+2017-3126,Megan,Cole,BEEDENG,2,Female
+2018-3127,Christian,Hayes,BSCA,3,Male
+2019-3128,Cheryl,Bryant,BSCS,4,Female
+2020-3129,Keith,Herrera,BSIT,1,Male
+2021-3130,Andrea,Gibson,BSSTAT,2,Female
+2022-3131,Roger,Ellis,BSBIO (MICROBIO),3,Male
+2023-3132,Hannah,Tran,BSBIO (MARINE),4,Female
+2024-3133,Terry,Medina,BSHM,1,Male
+2025-3134,Martha,Aguilar,BSACC,2,Female
+2026-3135,Sean,Stevens,BSBA (BE),3,Male
+2012-3136,Jacqueline,Murray,BSEDBIO,4,Female
+2013-3137,Gerald,Ford,BSEDCHEM,1,Male
+2014-3138,Frances,Castro,BSEDMATH,2,Female
+2015-3139,Carl,Weaver,BSIS,3,Male
+2016-3140,Gloria,Fernandez,BEEDENG,4,Female
+2017-3141,Dylan,Obrien,BSCA,1,Male
+2018-3142,Ann,Harrison,BSCS,2,Female
+2019-3143,Arthur,Tucker,BSIT,3,Male
+2020-3144,Teresa,Robertson,BSSTAT,4,Female
+2021-3145,Lawrence,Willis,BSBIO (MICROBIO),1,Male
+2022-3146,Kathryn,Dixon,BSBIO (MARINE),2,Female
+2023-3147,Austin,Bradley,BSHM,3,Male
+2024-3148,Sara,Black,BSACC,4,Female
+2025-3149,Jesse,Washington,BSBA (BE),1,Male
+2026-3150,Janice,Stone,BSEDBIO,2,Female
+2012-3151,Christian,Holmes,BSEDCHEM,3,Male
+2013-3152,Jean,Boyd,BSEDMATH,4,Female
+2014-3153,Bryan,Ruiz,BSIS,1,Male
+2015-3154,Alice,Spencer,BEEDENG,2,Female
+2016-3155,Joe,Arnold,BSCA,3,Male
+2017-3156,Julia,Wagner,BSCS,4,Female
+2018-3157,Noah,Fox,BSIT,1,Male
+2019-3158,Grace,Hunter,BSSTAT,2,Female
+2020-3159,Logan,Palmer,BSBIO (MICROBIO),3,Male
+2021-3160,Judy,Dunn,BSBIO (MARINE),4,Female
+2022-3161,Ralph,Crawford,BSHM,1,Male
+2023-3162,Doris,Burns,BSACC,2,Female
+2024-3163,Albert,Gordon,BSBA (BE),3,Male
+2025-3164,Abigail,Shaw,BSEDBIO,4,Female
+2026-3165,Wayne,Holmes,BSEDCHEM,1,Male
+2012-3166,Marie,Rice,BSEDMATH,2,Female
+2013-3167,Elijah,Robertson,BSIS,3,Male
+2014-3168,Denise,Hunt,BEEDENG,4,Female
+2015-3169,Bruce,Daniels,BSCA,1,Male
+2016-3170,Beverly,Palmer,BSCS,2,Female
+2017-3171,Willie,Arnold,BSIT,3,Male
+2018-3172,Amber,Grant,BSSTAT,4,Female
+2019-3173,Gabriel,Knight,BSBIO (MICROBIO),1,Male
+2020-3174,Marilyn,Hudson,BSBIO (MARINE),2,Female
+2021-3175,Alan,Riley,BSHM,3,Male
+2022-3176,Danielle,Berry,BSACC,4,Female
+2023-3177,Juan,Andrews,BSBA (BE),1,Male
+2024-3178,Natalie,Payne,BSEDBIO,2,Female
+2025-3179,Randy,Harper,BSEDCHEM,3,Male
+2026-3180,Brittany,Hawkins,BSEDMATH,4,Female
+2012-3181,Eugene,Elliott,BSIS,1,Male
+2013-3182,Diana,Carr,BEEDENG,2,Female
+2014-3183,Vincent,Carpenter,BSCA,3,Male
+2015-3184,Jane,Snyder,BSCS,4,Female
+2016-3185,Russell,Weaver,BSIT,1,Male
+2017-3186,Madison,Webb,BSSTAT,2,Female
+2018-3187,Louis,Lawson,BSBIO (MICROBIO),3,Male
+2019-3188,Rose,Harvey,BSBIO (MARINE),4,Female
+2020-3189,Philip,Rose,BSHM,1,Male
+2021-3190,Irene,Stone,BSACC,2,Female
+2022-3191,Bobby,Frazier,BSBA (BE),3,Male
+2023-3192,Kayla,Burke,BSEDBIO,4,Female
+2024-3193,Johnny,Franklin,BSEDCHEM,1,Male
+2025-3194,Lori,Boyd,BSEDMATH,2,Female
+2026-3195,Howard,Hicks,BSIS,3,Male
+2012-3196,Sylvia,Meyer,BEEDENG,4,Female
+2013-3197,Clarence,Rice,BSCA,1,Male
+2014-3198,Tiffany,George,BSCS,2,Female
+2015-3199,Matthew,Fox,BSIT,3,Male
+2016-3200,Alexis,Mccoy,BSSTAT,4,Female
+2017-3201,Martin,Dunn,BSBIO (MICROBIO),1,Male
+2018-3202,Gail,Warren,BSBIO (MARINE),2,Female
+2019-3203,Ernest,Carroll,BSHM,3,Male
+2020-3204,Victoria,Ray,BSACC,4,Female
+2021-3205,Craig,Howell,BSBA (BE),1,Male
+2022-3206,Samantha,Bradley,BSEDBIO,2,Female
+2023-3207,Shawn,Wheeler,BSEDCHEM,3,Male
+2024-3208,Valerie,Hansen,BSEDMATH,4,Female
+2025-3209,Todd,Willis,BSIS,1,Male
+2026-3210,Olivia,Reid,BEEDENG,2,Female
+2012-3211,Jimmy,Sims,BSCA,3,Male
+2013-3212,Lauren,Schmidt,BSCS,4,Female
+2014-3213,Victor,Wallace,BSIT,1,Male
+2015-3214,Haley,Gordon,BSSTAT,2,Female
+2016-3215,Marcus,Wagner,BSBIO (MICROBIO),3,Male
+2017-3216,Joan,Ramos,BSBIO (MARINE),4,Female
+2018-3217,Carl,Tucker,BSHM,1,Male
+2019-3218,Megan,Mason,BSACC,2,Female
+2020-3219,Arthur,Gibson,BSBA (BE),3,Male
+2021-3220,Ruby,Harrison,BSEDBIO,4,Female
+2022-3221,Albert,Rose,BSEDCHEM,1,Male
+2023-3222,Carol,Dixon,BSEDMATH,2,Female
+2024-3223,Bruce,Harvey,BSIS,3,Male
+2025-3224,Shirley,Woods,BEEDENG,4,Female
+2026-3225,Johnny,Washington,BSCA,1,Male
+2012-3226,Judy,Mcdonald,BSCS,2,Female
+2013-3227,Phillip,Cole,BSIT,3,Male
+2014-3228,Virginia,Ellis,BSSTAT,4,Female
+2015-3229,Eugene,Harper,BSBIO (MICROBIO),1,Male
+2016-3230,Martha,Burke,BSBIO (MARINE),2,Female
+2017-3231,Ralph,Palmer,BSHM,3,Male
+2018-3232,Ann,Stone,BSACC,4,Female
+2019-3233,Billy,Dunn,BSBA (BE),1,Male
+2020-3234,Theresa,Frazier,BSEDBIO,2,Female
+2021-3235,Louis,Riley,BSEDCHEM,3,Male
+2022-3236,Gloria,Hudson,BSEDMATH,4,Female
+2023-3237,Russell,Knight,BSIS,1,Male
+2024-3238,Alice,Grant,BEEDENG,2,Female
+2025-3239,Wayne,Arnold,BSCA,3,Male
+2026-3240,Jean,Palmer,BSCS,4,Female
+2012-3241,Randy,Daniels,BSIT,1,Male
+2013-3242,Diana,Hunt,BSSTAT,2,Female
+2014-3243,Vincent,Robertson,BSBIO (MICROBIO),3,Male
+2015-3244,Denise,Rice,BSBIO (MARINE),4,Female
+2016-3245,Joe,Holmes,BSHM,1,Male
+2017-3246,Marilyn,Shaw,BSACC,2,Female
+2018-3247,Alan,Gordon,BSBA (BE),3,Male
+2019-3248,Rose,Burns,BSEDBIO,4,Female
+2020-3250,Gabriel,Bradley,BSIS,2,Male
+2021-3251,Lori,Dixon,BEEDENG,3,Female
+2022-3252,Juan,Willis,BSCA,4,Male
+2023-3253,Sylvia,Tucker,BSCS,1,Female
+2024-3254,Philip,Harrison,BSIT,2,Male
+2025-3255,Jane,Castro,BSSTAT,3,Female
+2026-3256,Howard,Ford,BSBIO (MICROBIO),4,Male
+2012-3257,Tiffany,Murray,BSBIO (MARINE),1,Female
+2013-3258,Clarence,Stevens,BSHM,2,Male
+2014-3259,Victoria,Aguilar,BSACC,3,Female
+2015-3260,Matthew,Medina,BSBA (BE),4,Male
+2016-3261,Alexis,Tran,BSEDBIO,1,Female
+2017-3262,Martin,Ellis,BSEDCHEM,2,Male
+2018-3263,Gail,Gibson,BSEDMATH,3,Female
+2019-3264,Ernest,Herrera,BSIS,4,Male
+2020-3265,Ruby,Bryant,BEEDENG,1,Female
+2021-3266,Craig,Hayes,BSCA,2,Male
+2022-3267,Samantha,Cole,BSCS,3,Female
+2023-3268,Shawn,West,BSIT,4,Male
+2024-3269,Valerie,Moreno,BSSTAT,1,Female
+2025-3270,Todd,Wallace,BSBIO (MICROBIO),2,Male
+2026-3271,Olivia,Griffin,BSBIO (MARINE),3,Female
+2012-3272,Jimmy,Reynolds,BSHM,4,Male
+2013-3273,Lauren,Graham,BSACC,1,Female
+2014-3274,Victor,Hamilton,BSBA (BE),2,Male
+2015-3275,Haley,Alexander,BSEDBIO,3,Female
+2016-3276,Marcus,Patterson,BSEDCHEM,4,Male
+2017-3277,Joan,Jordan,BSEDMATH,1,Female
+2018-3278,Carl,Romero,BSIS,2,Male
+2019-3279,Megan,Simmons,BEEDENG,3,Female
+2020-3280,Arthur,Vasquez,BSCA,4,Male
+2021-3281,Theresa,Fisher,BSCS,1,Female
+2022-3282,Louis,Gonzales,BSIT,2,Male
+2023-3283,Gloria,Barnes,BSSTAT,3,Female
+2024-3284,Russell,Henderson,BSBIO (MICROBIO),4,Male
+2025-3285,Alice,Butler,BSBIO (MARINE),1,Female
+2026-3286,Wayne,Coleman,BSHM,2,Male
+2012-3287,Jean,Bell,BSACC,3,Female
+2013-3288,Randy,Sullivan,BSBA (BE),4,Male
+2014-3289,Diana,Russell,BSEDBIO,1,Female
+2015-3290,Vincent,Perry,BSEDCHEM,2,Male
+2016-3291,Denise,Jenkins,BSEDMATH,3,Female
+2017-3292,Joe,Powell,BSIS,4,Male
+2018-3293,Marilyn,Jimenez,BEEDENG,1,Female
+2019-3294,Alan,Foster,BSCA,2,Male
+2020-3295,Rose,Ross,BSCS,3,Female
+2021-3296,Gabriel,Long,BSIT,4,Male
+2022-3297,Lori,Myers,BSSTAT,1,Female
+2023-3298,Juan,Patel,BSBIO (MICROBIO),2,Male
+2024-3299,Sylvia,Sanders,BSBIO (MARINE),3,Female
+2025-3300,Philip,Castillo,BSHM,4,Male
+2026-3301,Jane,Alvarez,BSACC,1,Female
+2012-3302,Howard,Price,BSBA (BE),2,Male
+2013-3303,Tiffany,Hughes,BSEDBIO,3,Female
+2014-3304,Clarence,Ruiz,BSEDCHEM,4,Male
+2015-3305,Victoria,Mendoza,BSEDMATH,1,Female
+2016-3306,Matthew,Gray,BSIS,2,Male
+2017-3307,Alexis,Bennett,BEEDENG,3,Female
+2018-3308,Martin,James,BSCA,4,Male
+2019-3309,Gail,Wood,BSCS,1,Female
+2020-3310,Ernest,Chavez,BSIT,2,Male
+2021-3311,Ruby,Brooks,BSSTAT,3,Female
+2022-3312,Craig,Watson,BSBIO (MICROBIO),4,Male
+2023-3313,Samantha,Richardson,BSBIO (MARINE),1,Female
+2024-3314,Shawn,Ward,BSHM,2,Male
+2025-3315,Valerie,Cox,BSACC,3,Female
+2026-3316,Todd,Kim,BSBA (BE),4,Male
+2012-3317,Olivia,Ramos,BSEDBIO,1,Female
+2013-3318,Jimmy,Howard,BSEDCHEM,2,Male
+2014-3319,Lauren,Kelly,BSEDMATH,3,Female
+2015-3320,Victor,Reed,BSIS,4,Male
+2016-3321,Haley,Bailey,BEEDENG,1,Female
+2017-3322,Marcus,Peterson,BSCA,2,Male
+2018-3323,Joan,Cooper,BSCS,3,Female
+2019-3324,Carl,Morgan,BSIT,4,Male
+2020-3325,Megan,Ortiz,BSSTAT,1,Female
+2021-3326,Arthur,Gutierrez,BSBIO (MICROBIO),2,Male
+2022-3327,Theresa,Rogers,BSBIO (MARINE),3,Female
+2023-3328,Louis,Cook,BSHM,4,Male
+2024-3329,Gloria,Murphy,BSACC,1,Female
+2025-3330,Russell,Morales,BSBA (BE),2,Male
+2026-3331,Alice,Morris,BSEDBIO,3,Female
+2012-3332,Wayne,Stewart,BSEDCHEM,4,Male
+2013-3333,Jean,Reyes,BSEDMATH,1,Female
+2014-3334,Randy,Collins,BSIS,2,Male
+2015-3335,Diana,Edwards,BEEDENG,3,Female
+2016-3336,Vincent,Cruz,BSCA,4,Male
+2017-3337,Denise,Parker,BSCS,1,Female
+2018-3338,Joe,Diaz,BSIT,2,Male
+2019-3339,Marilyn,Turner,BSSTAT,3,Female
+2020-3340,Alan,Evans,BSBIO (MICROBIO),4,Male
+2021-3341,Rose,Phillips,BSBIO (MARINE),1,Female
+2022-3342,Gabriel,Gomez,BSHM,2,Male
+2023-3343,Lori,Roberts,BSACC,3,Female
+2024-3344,Juan,Carter,BSBA (BE),4,Male
+2025-3345,Sylvia,Mitchell,BSEDBIO,1,Female
+2026-3346,Philip,Campbell,BSEDCHEM,2,Male
+2012-3347,Jane,Rivera,BSEDMATH,3,Female
+2013-3348,Howard,Hall,BSIS,4,Male
+2014-3349,Tiffany,Baker,BEEDENG,1,Female
+2015-3350,Clarence,Nelson,BSCA,2,Male
+2016-3351,Victoria,Adams,BSCS,3,Female
+2017-3352,Matthew,Green,BSIT,4,Male
+2018-3353,Alexis,Flores,BSSTAT,1,Female
+2019-3354,Martin,Hill,BSBIO (MICROBIO),2,Male
+2020-3355,Gail,Nguyen,BSBIO (MARINE),3,Female
+2021-3356,Ernest,Torres,BSHM,4,Male
+2022-3357,Ruby,Scott,BSACC,1,Female
+2023-3358,Craig,Wright,BSBA (BE),2,Male
+2024-3359,Samantha,King,BSEDBIO,3,Female
+2025-3360,Shawn,Allen,BSEDCHEM,4,Male
+2026-3361,Valerie,Young,BSEDMATH,1,Female
+2012-3362,Todd,Walker,BSIS,2,Male
+2013-3363,Olivia,Robinson,BEEDENG,3,Female
+2014-3364,Jimmy,Lewis,BSCA,4,Male
+2015-3365,Lauren,Ramirez,BSCS,1,Female
+2016-3366,Victor,Clark,BSIT,2,Male
+2017-3367,Haley,Sanchez,BSSTAT,3,Female
+2018-3368,Marcus,Harris,BSBIO (MICROBIO),4,Male
+2019-3369,Joan,White,BSBIO (MARINE),1,Female
+2020-3370,Carl,Thompson,BSHM,2,Male
+2021-3371,Megan,Perez,BSACC,3,Female
+2022-3372,Arthur,Lee,BSBA (BE),4,Male
+2023-3373,Theresa,Martin,BSEDBIO,1,Female
+2024-3374,Louis,Jackson,BSEDCHEM,2,Male
+2025-3375,Gloria,Moore,BSEDMATH,3,Female
+2026-3376,Russell,Taylor,BSIS,4,Male
+2012-3377,Alice,Thomas,BEEDENG,1,Female
+2013-3378,Wayne,Anderson,BSCA,2,Male
+2014-3379,Jean,Wilson,BSCS,3,Female
+2015-3380,Randy,Gonzalez,BSIT,4,Male
+2016-3381,Diana,Lopez,BSSTAT,1,Female
+2017-3382,Vincent,Hernandez,BSBIO (MICROBIO),2,Male
+2018-3383,Denise,Martinez,BSBIO (MARINE),3,Female
+2019-3384,Joe,Rodriguez,BSHM,4,Male
+2020-3385,Marilyn,Davis,BSACC,1,Female
+2021-3386,Alan,Miller,BSBA (BE),2,Male
+2022-3387,Rose,Garcia,BSEDBIO,3,Female
+2023-3388,Gabriel,Jones,BSEDCHEM,4,Male
+2024-3389,Lori,Brown,BSEDMATH,1,Female
+2025-3390,Juan,Williams,BSIS,2,Male
+2026-3391,Sylvia,Johnson,BEEDENG,3,Female
+2012-3392,Philip,Smith,BSCA,4,Male
+2013-3393,Jane,Smith,BSCS,1,Female
+2014-3394,Howard,Johnson,BSIT,2,Male
+2015-3395,Tiffany,Williams,BSSTAT,3,Female
+2016-3396,Clarence,Brown,BSBIO (MICROBIO),4,Male
+2017-3397,Victoria,Jones,BSBIO (MARINE),1,Female
+2018-3398,Matthew,Garcia,BSHM,2,Male
+2019-3399,Alexis,Miller,BSACC,3,Female
+2020-3400,Martin,Davis,BSBA (BE),4,Male
+2021-3401,Gail,Rodriguez,BSEDBIO,1,Female
+2022-3402,Ernest,Martinez,BSEDCHEM,2,Male
+2023-3403,Ruby,Hernandez,BSEDMATH,3,Female
+2024-3404,Craig,Lopez,BSIS,4,Male
+2025-3405,Samantha,Gonzalez,BEEDENG,1,Female
+2026-3406,Shawn,Wilson,BSCA,2,Male
+2012-3407,Valerie,Anderson,BSCS,3,Female
+2013-3408,Todd,Thomas,BSIT,4,Male
+2014-3409,Olivia,Taylor,BSSTAT,1,Female
+2015-3410,Jimmy,Moore,BSBIO (MICROBIO),2,Male
+2016-3411,Lauren,Jackson,BSBIO (MARINE),3,Female
+2017-3412,Victor,Martin,BSHM,4,Male
+2018-3413,Haley,Lee,BSACC,1,Female
+2019-3414,Marcus,Perez,BSBA (BE),2,Male
+2020-3415,Joan,Thompson,BSEDBIO,3,Female
+2021-3416,Carl,White,BSEDCHEM,4,Male
+2022-3417,Megan,Harris,BSEDMATH,1,Female
+2023-3418,Arthur,Sanchez,BSIS,2,Male
+2024-3419,Theresa,Clark,BEEDENG,3,Female
+2025-3420,Louis,Ramirez,BSCA,4,Male
+2026-3421,Gloria,Lewis,BSCS,1,Female
+2012-3422,Russell,Robinson,BSIT,2,Male
+2013-3423,Alice,Walker,BSSTAT,3,Female
+2014-3424,Wayne,Young,BSBIO (MICROBIO),4,Male
+2015-3425,Jean,Allen,BSBIO (MARINE),1,Female
+2016-3426,Randy,King,BSHM,2,Male
+2017-3427,Diana,Wright,BSACC,3,Female
+2018-3428,Vincent,Scott,BSBA (BE),4,Male
+2019-3429,Denise,Torres,BSEDBIO,1,Female
+2020-3430,Joe,Nguyen,BSEDCHEM,2,Male
+2021-3431,Marilyn,Hill,BSEDMATH,3,Female
+2022-3432,Alan,Flores,BSIS,4,Male
+2023-3433,Rose,Green,BEEDENG,1,Female
+2024-3434,Gabriel,Adams,BSCA,2,Male
+2025-3435,Lori,Nelson,BSCS,3,Female
+2026-3436,Juan,Baker,BSIT,4,Male
+2012-3437,Sylvia,Hall,BSSTAT,1,Female
+2013-3438,Philip,Rivera,BSBIO (MICROBIO),2,Male
+2014-3439,Jane,Campbell,BSBIO (MARINE),3,Female
+2015-3440,Howard,Mitchell,BSHM,4,Male
+2016-3441,Tiffany,Carter,BSACC,1,Female
+2017-3442,Clarence,Roberts,BSBA (BE),2,Male
+2018-3443,Victoria,Gomez,BSEDBIO,3,Female
+2019-3444,Matthew,Phillips,BSEDCHEM,4,Male
+2020-3445,Alexis,Evans,BSEDMATH,1,Female
+2021-3446,Martin,Turner,BSIS,2,Male
+2022-3447,Gail,Diaz,BEEDENG,3,Female
+2023-3448,Ernest,Parker,BSCA,4,Male
+2024-3449,Ruby,Cruz,BSCS,1,Female
+2025-3450,Craig,Edwards,BSIT,2,Male
+2026-3451,Samantha,Collins,BSSTAT,3,Female
+2012-3452,Shawn,Reyes,BSBIO (MICROBIO),4,Male
+2013-3453,Valerie,Stewart,BSBIO (MARINE),1,Female
+2014-3454,Todd,Morris,BSHM,2,Male
+2015-3455,Olivia,Morales,BSACC,3,Female
+2016-3456,Jimmy,Murphy,BSBA (BE),4,Male
+2017-3457,Lauren,Cook,BSEDBIO,1,Female
+2018-3458,Victor,Rogers,BSEDCHEM,2,Male
+2019-3459,Haley,Morgan,BSEDMATH,3,Female
+2020-3460,Marcus,Peterson,BSIS,4,Male
+2021-3461,Joan,Cooper,BEEDENG,1,Female
+2022-3462,Carl,Reed,BSCA,2,Male
+2023-3463,Megan,Bailey,BSCS,3,Female
+2024-3464,Arthur,Bell,BSIT,4,Male
+2025-3465,Theresa,Gomez,BSSTAT,1,Female
+2026-3466,Louis,Kelly,BSBIO (MICROBIO),2,Male
+2012-3467,Gloria,Howard,BSBIO (MARINE),3,Female
+2013-3468,Russell,Ward,BSHM,4,Male
+2014-3469,Alice,Cox,BSACC,1,Female
+2015-3470,Wayne,Diaz,BSBA (BE),2,Male
+2016-3471,Jean,Richardson,BSEDBIO,3,Female
+2017-3472,Randy,Wood,BSEDCHEM,4,Male
+2018-3473,Diana,Watson,BSEDMATH,1,Female
+2019-3474,Vincent,Brooks,BSIS,2,Male
+2020-3475,Denise,Bennett,BEEDENG,3,Female
+2021-3476,Joe,Gray,BSCA,4,Male
+2022-3477,Marilyn,James,BSCS,1,Female
+2023-3478,Alan,Reyes,BSIT,2,Male
+2024-3479,Rose,Cruz,BSSTAT,3,Female
+2025-3480,Gabriel,Hughes,BSBIO (MICROBIO),4,Male
+2026-3481,Lori,Price,BSBIO (MARINE),1,Female
+2012-3482,Juan,Alvarez,BSHM,2,Male
+2013-3483,Sylvia,Castillo,BSACC,3,Female
+2014-3484,Philip,Sanders,BSBA (BE),4,Male
+2015-3485,Jane,Patel,BSEDBIO,1,Female
+2016-3486,Howard,Myers,BSEDCHEM,2,Male
+2017-3487,Tiffany,Long,BSEDMATH,3,Female
+2018-3488,Clarence,Ross,BSIS,4,Male
+2019-3489,Victoria,Foster,BEEDENG,1,Female
+2020-3490,Matthew,Jimenez,BSCA,2,Male
+2021-3491,Alexis,Powell,BSCS,3,Female
+2022-3492,Martin,Jenkins,BSIT,4,Male
+2023-3493,Gail,Perry,BSSTAT,1,Female
+2024-3494,Ernest,Russell,BSBIO (MICROBIO),2,Male
+2025-3495,Ruby,Sullivan,BSBIO (MARINE),3,Female
+2026-3496,Craig,Bell,BSHM,4,Male
+2012-3497,Samantha,Coleman,BSACC,1,Female
+2013-3498,Shawn,Henderson,BSBA (BE),2,Male
+2014-3499,Valerie,Barnes,BSEDBIO,3,Female
+2015-3500,Todd,Gonzales,BSEDCHEM,4,Male
+2016-3501,Olivia,Fisher,BSEDMATH,1,Female
+2017-3502,Jimmy,Vasquez,BSIS,2,Male
+2018-3503,Lauren,Simmons,BEEDENG,3,Female
+2019-3504,Victor,Romero,BSCA,4,Male
+2020-3505,Haley,Jordan,BSCS,1,Female
+2021-3506,Marcus,Patterson,BSIT,2,Male
+2022-3507,Joan,Alexander,BSSTAT,3,Female
+2023-3508,Carl,Hamilton,BSBIO (MICROBIO),4,Male
+2024-3509,Megan,Graham,BSBIO (MARINE),1,Female
+2025-3510,Arthur,Reynolds,BSHM,2,Male
+2026-3511,Theresa,Griffin,BSACC,3,Female
+2012-3512,Louis,Wallace,BSBA (BE),4,Male
+2013-3513,Gloria,Moreno,BSEDBIO,1,Female
+2014-3514,Russell,West,BSEDCHEM,2,Male
+2015-3515,Alice,Cole,BSEDMATH,3,Female
+2016-3516,Wayne,Hayes,BSIS,4,Male
+2017-3517,Jean,Bryant,BEEDENG,1,Female
+2018-3518,Randy,Herrera,BSCA,2,Male
+2019-3519,Diana,Gibson,BSCS,3,Female
+2020-3520,Vincent,Ellis,BSIT,4,Male
+2021-3521,Denise,Tran,BSSTAT,1,Female
+2022-3522,Joe,Medina,BSBIO (MICROBIO),2,Male
+2023-3523,Marilyn,Aguilar,BSBIO (MARINE),3,Female
+2024-3524,Alan,Stevens,BSHM,4,Male
+2025-3525,Rose,Murray,BSACC,1,Female
+2026-3526,Gabriel,Ford,BSBA (BE),2,Male
+2012-3527,Lori,Castro,BSEDBIO,3,Female
+2013-3528,Juan,Harrison,BSEDCHEM,4,Male
+2014-3529,Sylvia,Tucker,BSEDMATH,1,Female
+2015-3530,Philip,Willis,BSIS,2,Male
+2016-3531,Jane,Dixon,BEEDENG,3,Female
+2017-3532,Howard,Bradley,BSCA,4,Male
+2018-3533,Tiffany,Burns,BSCS,1,Female
+2019-3534,Clarence,Gordon,BSIT,2,Male
+2020-3535,Victoria,Shaw,BSSTAT,3,Female
+2021-3536,Matthew,Holmes,BSBIO (MICROBIO),4,Male
+2022-3537,Alexis,Rice,BSBIO (MARINE),1,Female
+2023-3538,Martin,Robertson,BSHM,2,Male
+2024-3539,Gail,Hunt,BSACC,3,Female
+2025-3540,Ernest,Daniels,BSBA (BE),4,Male
+2026-3541,Ruby,Palmer,BSEDBIO,1,Female
+2012-3542,Craig,Arnold,BSEDCHEM,2,Male
+2013-3543,Samantha,Wagner,BSEDMATH,3,Female
+2014-3544,Shawn,Fox,BSIS,4,Male
+2015-3545,Valerie,Hunter,BEEDENG,1,Female
+2016-3546,Todd,Palmer,BSCA,2,Male
+2017-3547,Olivia,Dunn,BSCS,3,Female
+2018-3548,Jimmy,Crawford,BSIT,4,Male
+2019-3549,Lauren,Knight,BSSTAT,1,Female
+2020-3550,Victor,Hudson,BSBIO (MICROBIO),2,Male
+2021-3551,Haley,Riley,BSBIO (MARINE),3,Female
+2022-3552,Marcus,Berry,BSHM,4,Male
+2023-3553,Joan,Andrews,BSACC,1,Female
+2024-3554,Carl,Payne,BSBA (BE),2,Male
+2025-3555,Megan,Harper,BSEDBIO,3,Female
+2026-3556,Arthur,Hawkins,BSEDCHEM,4,Male
+2012-3557,Theresa,Elliott,BSEDMATH,1,Female
+2013-3558,Louis,Carr,BSIS,2,Male
+2014-3559,Gloria,Carpenter,BEEDENG,3,Female
+2015-3560,Russell,Snyder,BSCA,4,Male
+2016-3561,Alice,Weaver,BSCS,1,Female
+2017-3562,Wayne,Webb,BSIT,2,Male
+2018-3563,Jean,Lawson,BSSTAT,3,Female
+2019-3564,Randy,Harvey,BSBIO (MICROBIO),4,Male
+2020-3565,Diana,Rose,BSBIO (MARINE),1,Female
+2021-3566,Vincent,Stone,BSHM,2,Male
+2022-3567,Denise,Frazier,BSACC,3,Female
+2023-3568,Joe,Burke,BSBA (BE),4,Male
+2024-3569,Marilyn,Franklin,BSEDBIO,1,Female
+2025-3570,Alan,Boyd,BSEDCHEM,2,Male
+2026-3571,Rose,Hicks,BSEDMATH,3,Female
+2012-3572,Gabriel,Meyer,BSIS,4,Male
+2013-3573,Lori,Rice,BEEDENG,1,Female
+2014-3574,Juan,George,BSCA,2,Male
+2015-3575,Sylvia,Fox,BSCS,3,Female
+2016-3576,Philip,Mccoy,BSIT,4,Male
+2017-3577,Jane,Dunn,BSSTAT,1,Female
+2018-3578,Howard,Warren,BSBIO (MICROBIO),2,Male
+2019-3579,Tiffany,Carroll,BSBIO (MARINE),3,Female
+2020-3580,Clarence,Ray,BSHM,4,Male
+2021-3581,Victoria,Howell,BSACC,1,Female
+2022-3582,Matthew,Bradley,BSBA (BE),2,Male
+2023-3583,Alexis,Wheeler,BSEDBIO,3,Female
+2024-3584,Martin,Hansen,BSEDCHEM,4,Male
+2025-3585,Gail,Willis,BSEDMATH,1,Female
+2026-3586,Ernest,Reid,BSIS,2,Male
+2012-3587,Ruby,Sims,BEEDENG,3,Female
+2013-3588,Craig,Schmidt,BSCA,4,Male
+2014-3589,Samantha,Wallace,BSCS,1,Female
+2015-3590,Shawn,Gordon,BSIT,2,Male
+2016-3591,Valerie,Wagner,BSSTAT,3,Female
+2017-3592,Todd,Ramos,BSBIO (MICROBIO),4,Male
+2018-3593,Olivia,Tucker,BSBIO (MARINE),1,Female
+2019-3594,Jimmy,Mason,BSHM,2,Male
+2020-3595,Lauren,Gibson,BSACC,3,Female
+2021-3596,Victor,Harrison,BSBA (BE),4,Male
+2022-3597,Haley,Rose,BSEDBIO,1,Female
+2023-3598,Marcus,Dixon,BSEDCHEM,2,Male
+2024-3599,Joan,Harvey,BSEDMATH,3,Female
+2025-3600,Carl,Woods,BSIS,4,Male
+2026-3601,Megan,Washington,BEEDENG,1,Female
+2012-3602,Arthur,Mcdonald,BSCA,2,Male
+2013-3603,Theresa,Cole,BSCS,3,Female
+2014-3604,Louis,Ellis,BSIT,4,Male
+2015-3605,Gloria,Harper,BSSTAT,1,Female
+2016-3606,Russell,Burke,BSBIO (MICROBIO),2,Male
+2017-3607,Alice,Palmer,BSBIO (MARINE),3,Female
+2018-3608,Wayne,Stone,BSHM,4,Male
+2019-3609,Jean,Dunn,BSACC,1,Female
+2020-3610,Randy,Frazier,BSBA (BE),2,Male
+2021-3611,Diana,Riley,BSEDBIO,3,Female
+2022-3612,Vincent,Hudson,BSEDCHEM,4,Male
+2023-3613,Denise,Knight,BSEDMATH,1,Female
+2024-3614,Joe,Grant,BSIS,2,Male
+2025-3615,Marilyn,Arnold,BEEDENG,3,Female
+2026-3616,Alan,Palmer,BSCA,4,Male
+2012-3617,Rose,Daniels,BSCS,1,Female
+2013-3618,Gabriel,Hunt,BSIT,2,Male
+2014-3619,Lori,Robertson,BSSTAT,3,Female
+2015-3620,Juan,Rice,BSBIO (MICROBIO),4,Male
+2016-3621,Sylvia,Holmes,BSBIO (MARINE),1,Female
+2017-3622,Philip,Shaw,BSHM,2,Male
+2018-3623,Jane,Gordon,BSACC,3,Female
+2019-3624,Howard,Burns,BSBA (BE),4,Male
+2020-3625,Tiffany,Bradley,BSEDBIO,1,Female
+2021-3626,Clarence,Dixon,BSEDCHEM,2,Male
+2022-3627,Victoria,Willis,BSEDMATH,3,Female
+2023-3628,Matthew,Tucker,BSIS,4,Male
+2024-3629,Alexis,Harrison,BEEDENG,1,Female
+2025-3630,Martin,Castro,BSCA,2,Male
+2026-3631,Gail,Ford,BSCS,3,Female
+2012-3632,Ernest,Murray,BSIT,4,Male
+2013-3633,Ruby,Stevens,BSSTAT,1,Female
+2014-3634,Craig,Aguilar,BSBIO (MICROBIO),2,Male
+2015-3635,Samantha,Medina,BSBIO (MARINE),3,Female
+2016-3636,Shawn,Tran,BSHM,4,Male
+2017-3637,Valerie,Ellis,BSACC,1,Female
+2018-3638,Todd,Gibson,BSBA (BE),2,Male
+2019-3639,Olivia,Herrera,BSEDBIO,3,Female
+2020-3640,Jimmy,Bryant,BSEDCHEM,4,Male
+2021-3641,Lauren,Hayes,BSEDMATH,1,Female
+2022-3642,Victor,Cole,BSIS,2,Male
+2023-3643,Haley,West,BEEDENG,3,Female
+2024-3644,Marcus,Moreno,BSCA,4,Male
+2025-3645,Joan,Wallace,BSCS,1,Female
+2026-3646,Carl,Griffin,BSIT,2,Male
+2012-3647,Megan,Reynolds,BSSTAT,3,Female
+2013-3648,Arthur,Graham,BSBIO (MICROBIO),4,Male
+2014-3649,Theresa,Hamilton,BSBIO (MARINE),1,Female
+2015-3650,Louis,Alexander,BSHM,2,Male
+2016-3651,Gloria,Patterson,BSACC,3,Female
+2017-3652,Russell,Jordan,BSBA (BE),4,Male
+2018-3653,Alice,Romero,BSEDBIO,1,Female
+2019-3654,Wayne,Simmons,BSEDCHEM,2,Male
+2020-3655,Jean,Vasquez,BSEDMATH,3,Female
+2021-3656,Randy,Fisher,BSIS,4,Male
+2022-3657,Diana,Gonzales,BEEDENG,1,Female
+2023-3658,Vincent,Barnes,BSCA,2,Male
+2024-3659,Denise,Henderson,BSCS,3,Female
+2025-3660,Joe,Butler,BSIT,4,Male
+2026-3661,Marilyn,Coleman,BSSTAT,1,Female
+2012-3662,Alan,Bell,BSBIO (MICROBIO),2,Male
+2013-3663,Rose,Sullivan,BSBIO (MARINE),3,Female
+2014-3664,Gabriel,Russell,BSHM,4,Male
+2015-3665,Lori,Perry,BSACC,1,Female
+2016-3666,Juan,Jenkins,BSBA (BE),2,Male
+2017-3667,Sylvia,Powell,BSEDBIO,3,Female
+2018-3668,Philip,Jimenez,BSEDCHEM,4,Male
+2019-3669,Jane,Foster,BSEDMATH,1,Female
+2020-3670,Howard,Ross,BSIS,2,Male
+2021-3671,Tiffany,Long,BEEDENG,3,Female
+2022-3672,Clarence,Myers,BSCA,4,Male
+2023-3673,Victoria,Patel,BSCS,1,Female
+2024-3674,Matthew,Sanders,BSIT,2,Male
+2025-3675,Alexis,Castillo,BSSTAT,3,Female
+2026-3676,Martin,Alvarez,BSBIO (MICROBIO),4,Male
+2012-3677,Gail,Price,BSBIO (MARINE),1,Female
+2013-3678,Ernest,Hughes,BSHM,2,Male
+2014-3679,Ruby,Ruiz,BSACC,3,Female
+2015-3680,Craig,Mendoza,BSBA (BE),4,Male
+2016-3681,Samantha,Gray,BSEDBIO,1,Female
+2017-3682,Shawn,Bennett,BSEDCHEM,2,Male
+2018-3683,Valerie,James,BSEDMATH,3,Female
+2019-3684,Todd,Wood,BSIS,4,Male
+2020-3685,Olivia,Chavez,BEEDENG,1,Female
+2021-3686,Jimmy,Brooks,BSCA,2,Male
+2022-3687,Lauren,Watson,BSCS,3,Female
+2023-3688,Victor,Richardson,BSIT,4,Male
+2024-3689,Haley,Ward,BSSTAT,1,Female
+2025-3690,Marcus,Cox,BSBIO (MICROBIO),2,Male
+2026-3691,Joan,Kim,BSBIO (MARINE),3,Female
+2012-3692,Carl,Ramos,BSHM,4,Male
+2013-3693,Megan,Howard,BSACC,1,Female
+2014-3694,Arthur,Kelly,BSBA (BE),2,Male
+2015-3695,Theresa,Reed,BSEDBIO,3,Female
+2016-3696,Louis,Bailey,BSEDCHEM,4,Male
+2017-3697,Gloria,Peterson,BSEDMATH,1,Female
+2018-3698,Russell,Cooper,BSIS,2,Male
+2019-3699,Alice,Morgan,BEEDENG,3,Female
+2020-3700,Wayne,Ortiz,BSCA,4,Male
+2021-3701,Jean,Gutierrez,BSCS,1,Female
+2022-3702,Randy,Rogers,BSIT,2,Male
+2023-3703,Diana,Cook,BSSTAT,3,Female
+2024-3704,Vincent,Murphy,BSBIO (MICROBIO),4,Male
+2025-3705,Denise,Morales,BSBIO (MARINE),1,Female
+2026-3706,Joe,Morris,BSHM,2,Male
+2012-3707,Marilyn,Stewart,BSACC,3,Female
+2013-3708,Alan,Reyes,BSBA (BE),4,Male
+2014-3709,Rose,Collins,BSEDBIO,1,Female
+2015-3710,Gabriel,Edwards,BSEDCHEM,2,Male
+2016-3711,Lori,Cruz,BSEDMATH,3,Female
+2017-3712,Juan,Parker,BSIS,4,Male
+2018-3713,Sylvia,Diaz,BEEDENG,1,Female
+2019-3714,Philip,Turner,BSCA,2,Male
+2020-3715,Jane,Evans,BSCS,3,Female
+2021-3716,Howard,Phillips,BSIT,4,Male
+2022-3717,Tiffany,Gomez,BSSTAT,1,Female
+2023-3718,Clarence,Roberts,BSBIO (MICROBIO),2,Male
+2024-3719,Victoria,Carter,BSBIO (MARINE),3,Female
+2025-3720,Matthew,Mitchell,BSHM,4,Male
+2026-3721,Alexis,Campbell,BSACC,1,Female
+2012-3722,Martin,Rivera,BSBA (BE),2,Male
+2013-3723,Gail,Hall,BSEDBIO,3,Female
+2014-3724,Ernest,Baker,BSEDCHEM,4,Male
+2015-3725,Ruby,Nelson,BSEDMATH,1,Female
+2016-3726,Craig,Adams,BSIS,2,Male
+2017-3727,Samantha,Green,BEEDENG,3,Female
+2018-3728,Shawn,Flores,BSCA,4,Male
+2019-3729,Valerie,Hill,BSCS,1,Female
+2020-3730,Todd,Nguyen,BSIT,2,Male
+2021-3731,Olivia,Torres,BSSTAT,3,Female
+2022-3732,Jimmy,Scott,BSBIO (MICROBIO),4,Male
+2023-3733,Lauren,Wright,BSBIO (MARINE),1,Female
+2024-3734,Victor,King,BSHM,2,Male
+2025-3735,Haley,Allen,BSACC,3,Female
+2026-3736,Marcus,Young,BSBA (BE),4,Male
+2012-3737,Joan,Walker,BSEDBIO,1,Female
+2013-3738,Carl,Robinson,BSEDCHEM,2,Male
+2014-3739,Megan,Lewis,BSEDMATH,3,Female
+2015-3740,Arthur,Clark,BSIS,4,Male
+2016-3741,Theresa,Sanchez,BEEDENG,1,Female
+2017-3742,Louis,Harris,BSCA,2,Male
+2018-3743,Gloria,White,BSCS,3,Female
+2019-3744,Russell,Thompson,BSIT,4,Male
+2020-3745,Alice,Perez,BSSTAT,1,Female
+2021-3746,Wayne,Lee,BSBIO (MICROBIO),2,Male
+2022-3747,Jean,Martin,BSBIO (MARINE),3,Female
+2023-3748,Randy,Jackson,BSHM,4,Male
+2024-3749,Diana,Taylor,BSACC,1,Female
+2025-3750,Vincent,Thomas,BSBA (BE),2,Male
+2026-3751,Denise,Anderson,BSEDBIO,3,Female
+2012-3752,Joe,Wilson,BSEDCHEM,4,Male
+2013-3753,Marilyn,Gonzalez,BSEDMATH,1,Female
+2014-3754,Alan,Lopez,BSIS,2,Male
+2015-3755,Rose,Martinez,BEEDENG,3,Female
+2016-3756,Gabriel,Hernandez,BSCA,4,Male
+2017-3757,Lori,Rodriguez,BSCS,1,Female
+2018-3758,Juan,Davis,BSIT,2,Male
+2019-3759,Sylvia,Miller,BSSTAT,3,Female
+2020-3760,Philip,Garcia,BSBIO (MICROBIO),4,Male
+2021-3761,Jane,Jones,BSBIO (MARINE),1,Female
+2022-3762,Howard,Brown,BSHM,2,Male
+2023-3763,Tiffany,Williams,BSACC,3,Female
+2024-3764,Clarence,Johnson,BSBA (BE),4,Male
+2025-3765,Victoria,Smith,BSEDBIO,1,Female
+2026-3766,Matthew,Smith,BSEDCHEM,2,Male
+2012-3767,Alexis,Johnson,BSEDMATH,3,Female
+2013-3768,Martin,Williams,BSIS,4,Male
+2014-3769,Gail,Brown,BEEDENG,1,Female
+2015-3770,Ernest,Jones,BSCA,2,Male
+2016-3771,Ruby,Garcia,BSCS,3,Female
+2017-3772,Craig,Miller,BSIT,4,Male
+2018-3773,Samantha,Davis,BSSTAT,1,Female
+2019-3774,Shawn,Rodriguez,BSBIO (MICROBIO),2,Male
+2020-3775,Valerie,Martinez,BSBIO (MARINE),3,Female
+2021-3776,Todd,Hernandez,BSHM,4,Male
+2022-3777,Olivia,Lopez,BSACC,1,Female
+2023-3778,Jimmy,Gonzalez,BSBA (BE),2,Male
+2024-3779,Lauren,Wilson,BSEDBIO,3,Female
+2025-3780,Victor,Anderson,BSEDCHEM,4,Male
+2026-3781,Haley,Thomas,BSEDMATH,1,Female
+2012-3782,Marcus,Taylor,BSIS,2,Male
+2013-3783,Joan,Moore,BEEDENG,3,Female
+2014-3784,Carl,Jackson,BSCA,4,Male
+2015-3785,Megan,Martin,BSCS,1,Female
+2016-3786,Arthur,Lee,BSIT,2,Male
+2017-3787,Theresa,Perez,BSSTAT,3,Female
+2018-3788,Louis,Thompson,BSBIO (MICROBIO),4,Male
+2019-3789,Gloria,White,BSBIO (MARINE),1,Female
+2020-3790,Russell,Harris,BSHM,2,Male
+2021-3791,Alice,Sanchez,BSACC,3,Female
+2022-3792,Wayne,Clark,BSBA (BE),4,Male
+2023-3793,Jean,Ramirez,BSEDBIO,1,Female
+2024-3794,Randy,Lewis,BSEDCHEM,2,Male
+2025-3795,Diana,Robinson,BSEDMATH,3,Female
+2026-3796,Vincent,Walker,BSIS,4,Male
+2012-3797,Denise,Young,BEEDENG,1,Female
+2013-3798,Joe,Allen,BSCA,2,Male
+2014-3799,Marilyn,King,BSCS,3,Female
+2015-3800,Alan,Wright,BSIT,4,Male
+2016-3801,Rose,Scott,BSSTAT,1,Female
+2017-3802,Gabriel,Torres,BSBIO (MICROBIO),2,Male
+2018-3803,Lori,Nguyen,BSBIO (MARINE),3,Female
+2019-3804,Juan,Hill,BSHM,4,Male
+2020-3805,Sylvia,Flores,BSACC,1,Female
+2021-3806,Philip,Green,BSBA (BE),2,Male
+2022-3807,Jane,Adams,BSEDBIO,3,Female
+2023-3808,Howard,Nelson,BSEDCHEM,4,Male
+2024-3809,Tiffany,Baker,BSEDMATH,1,Female
+2025-3810,Clarence,Hall,BSIS,2,Male
+2026-3811,Victoria,Rivera,BEEDENG,3,Female
+2012-3812,Matthew,Campbell,BSCA,4,Male
+2013-3813,Alexis,Mitchell,BSCS,1,Female
+2014-3814,Martin,Carter,BSIT,2,Male
+2015-3815,Gail,Roberts,BSSTAT,3,Female
+2016-3816,Ernest,Gomez,BSBIO (MICROBIO),4,Male
+2017-3817,Ruby,Phillips,BSBIO (MARINE),1,Female
+2018-3818,Craig,Evans,BSHM,2,Male
+2019-3819,Samantha,Turner,BSACC,3,Female
+2020-3820,Shawn,Diaz,BSBA (BE),4,Male
+2021-3821,Valerie,Parker,BSEDBIO,1,Female
+2022-3822,Todd,Cruz,BSEDCHEM,2,Male
+2023-3823,Olivia,Edwards,BSEDMATH,3,Female
+2024-3824,Jimmy,Collins,BSIS,4,Male
+2025-3825,Lauren,Reyes,BEEDENG,1,Female
+2026-3826,Victor,Stewart,BSCA,2,Male
+2012-3827,Haley,Morris,BSCS,3,Female
+2013-3828,Marcus,Morales,BSIT,4,Male
+2014-3829,Joan,Murphy,BSSTAT,1,Female
+2015-3830,Carl,Cook,BSBIO (MICROBIO),2,Male
+2016-3831,Megan,Rogers,BSBIO (MARINE),3,Female
+2017-3832,Arthur,Morgan,BSHM,4,Male
+2018-3833,Theresa,Peterson,BSACC,1,Female
+2019-3834,Louis,Cooper,BSBA (BE),2,Male
+2020-3835,Gloria,Reed,BSEDBIO,3,Female
+2021-3836,Russell,Bailey,BSEDCHEM,4,Male
+2022-3837,Alice,Bell,BSEDMATH,1,Female
+2023-3838,Wayne,Gomez,BSIS,2,Male
+2024-3839,Jean,Kelly,BEEDENG,3,Female
+2025-3840,Randy,Howard,BSCA,4,Male
+2026-3841,Diana,Ward,BSCS,1,Female
+2012-3842,Vincent,Cox,BSIT,2,Male
+2013-3843,Denise,Diaz,BSSTAT,3,Female
+2014-3844,Joe,Richardson,BSBIO (MICROBIO),4,Male
+2015-3845,Marilyn,Wood,BSBIO (MARINE),1,Female
+2016-3846,Alan,Watson,BSHM,2,Male
+2017-3847,Rose,Brooks,BSACC,3,Female
+2018-3848,Gabriel,Bennett,BSBA (BE),4,Male
+2019-3849,Lori,Gray,BSEDBIO,1,Female
+2020-3850,Juan,James,BSEDCHEM,2,Male
+2021-3851,Sylvia,Reyes,BSEDMATH,3,Female
+2022-3852,Philip,Cruz,BSIS,4,Male
+2023-3853,Jane,Hughes,BEEDENG,1,Female
+2024-3854,Howard,Price,BSCA,2,Male
+2025-3855,Tiffany,Myers,BSCS,3,Female
+2026-3856,Clarence,Long,BSIT,4,Male
+2012-3857,Victoria,Foster,BSSTAT,1,Female
+2013-3858,Matthew,Sanders,BSBIO (MICROBIO),2,Male
+2014-3859,Alexis,Ross,BSBIO (MARINE),3,Female
+2015-3860,Martin,Henderson,BSHM,4,Male
+2016-3861,Gail,Coleman,BSACC,1,Female
+2017-3862,Ernest,Jenkins,BSBA (BE),2,Male
+2018-3863,Ruby,Perry,BSEDBIO,3,Female
+2019-3864,Craig,Powell,BSEDCHEM,4,Male
+2020-3865,Samantha,Long,BSEDMATH,1,Female
+2021-3866,Shawn,Patterson,BSIS,2,Male
+2022-3867,Valerie,Hughes,BEEDENG,3,Female
+2023-3868,Todd,Washington,BSCA,4,Male
+2024-3869,Olivia,Butler,BSCS,1,Female
+2025-3870,Jimmy,Simmons,BSIT,2,Male
+2026-3871,Lauren,Foster,BSSTAT,3,Female
+2012-3872,Victor,Gonzales,BSBIO (MICROBIO),4,Male
+2013-3873,Haley,Bryant,BSBIO (MARINE),1,Female
+2014-3874,Marcus,Alexander,BSHM,2,Male
+2015-3875,Joan,Russell,BSACC,3,Female
+2016-3876,Carl,Griffin,BSBA (BE),4,Male
+2017-3877,Megan,Diaz,BSEDBIO,1,Female
+2018-3878,Arthur,Hayes,BSEDCHEM,2,Male
+2019-3879,Theresa,Myers,BSEDMATH,3,Female
+2020-3880,Louis,Ford,BSIS,4,Male
+2021-3881,Gloria,Hamilton,BEEDENG,1,Female
+2022-3882,Russell,Graham,BSCA,2,Male
+2023-3883,Alice,Sullivan,BSCS,3,Female
+2024-3884,Wayne,Woods,BSIT,4,Male
+2025-3885,Jean,Cole,BSSTAT,1,Female
+2026-3886,Randy,West,BSBIO (MICROBIO),2,Male
+2012-3887,Diana,Jordan,BSBIO (MARINE),3,Female
+2013-3888,Vincent,Owens,BSHM,4,Male
+2014-3889,Denise,Reynolds,BSACC,1,Female
+2015-3890,Joe,Fisher,BSBA (BE),2,Male
+2016-3891,Marilyn,Ellis,BSEDBIO,3,Female
+2017-3892,Alan,Harrison,BSEDCHEM,4,Male
+2018-3893,Rose,Gibson,BSEDMATH,1,Female
+2019-3894,Gabriel,Mcdonald,BSIS,2,Male
+2020-3895,Lori,Cruz,BEEDENG,3,Female
+2021-3896,Juan,Gomez,BSCA,4,Male
+2022-3897,Sylvia,Ortiz,BSCS,1,Female
+2023-3898,Philip,Gomez,BSIT,2,Male
+2024-3899,Jane,Murray,BSSTAT,3,Female
+2025-3900,Howard,Freeman,BSBIO (MICROBIO),4,Male

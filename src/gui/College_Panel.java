@@ -279,15 +279,44 @@ public class College_Panel {
                 }
             }
 
-            //update
+            // Update
             if (isUpdate) {
+                // 1. Remember the old code before we change it!
+                String oldCode = collegeToUpdate.getCollegeCode();
+
+                // 2. Update the college itself
                 collegeToUpdate.setCollegeCode(code);
                 collegeToUpdate.setCollegeName(name);
                 table.refresh();
+
+                // 3. THE CASCADE FIX: If the code changed, update all connected programs!
+                if (!oldCode.equalsIgnoreCase(code)) {
+                    List<String[]> programs = CsvHandler.readCSV("src/data/program_data.csv");
+                    List<String> updatedProgramLines = new ArrayList<>();
+                    updatedProgramLines.add("code,name,college");
+                    boolean changed = false;
+
+                    for (String[] row : programs) {
+                        if (row.length >= 3 && !row[0].equalsIgnoreCase("code")) {
+                            // If the program has the OLD college code, give them the NEW one
+                            if (row[2].equalsIgnoreCase(oldCode)) {
+                                row[2] = code;
+                                changed = true;
+                            }
+                            updatedProgramLines.add(String.join(",", row));
+                        }
+                    }
+                    // Save the updated programs to the CSV
+                    if (changed) {
+                        CsvHandler.overwriteCSV("src/data/program_data.csv", updatedProgramLines);
+                    }
+                }
+
             } else {
                 College newCollege = new College(code, name);
                 table.getItems().add(newCollege);
             }
+            
             refreshCSV();
             modal.close();
         });
