@@ -145,13 +145,14 @@ public class Student_Panel {
         search.setOnAction(e -> {
             String query = search.getText().trim().toLowerCase();
             
-            //reset table order if empty
+            // 1. If search is empty, clear selection and reset table
             if (query.isEmpty()) {
                 table.getSelectionModel().clearSelection();
                 loadData(); 
                 return;
             }
 
+            // 2. Validate input
             boolean isIdFormat = query.matches("^\\d{4}-\\d{4}$");
             boolean hasNumbers = query.matches(".*\\d.*");
 
@@ -169,9 +170,9 @@ public class Student_Panel {
             }
 
             ObservableList<Student> items = table.getItems();
-            List<Student> programMatches = new ArrayList<>();
             
-            //program search
+            // --- PATH A: PROGRAM SEARCH ---
+            List<Student> programMatches = new ArrayList<>();
             for (Student s : items) {
                 if (s.getProgramCode().toLowerCase().equals(query)) {
                     programMatches.add(s);
@@ -188,18 +189,15 @@ public class Student_Panel {
                 for (Student s : programMatches) {
                     table.getSelectionModel().select(s);
                 }
-                
                 table.scrollTo(0);
                 return; 
             }
 
-            //normal student search
-            table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-            boolean foundMatch = false;
+            // --- PATH B: NORMAL STUDENT SEARCH ---
+            List<Student> nameMatches = new ArrayList<>();
             
             for (Student s : items) {
                 boolean match = false;
-                
                 if (isIdFormat) {
                     match = s.getId().toLowerCase().equals(query);
                 } else {
@@ -208,19 +206,38 @@ public class Student_Panel {
                 }
 
                 if (match) {
-                    table.getSelectionModel().clearSelection();
-                    table.getSelectionModel().select(s);
-                    table.scrollTo(s);
-                    showStudentInfoDialog(s);
-                    foundMatch = true;
-                    break;
+                    nameMatches.add(s); 
                 }
             }
 
-            if (!foundMatch) {
-                showWarningDialog("No student found matching: " + search.getText());
-                search.clear();
+            if (!nameMatches.isEmpty()) {
+                // 1. Move all matches to the very top of the table!
+                items.removeAll(nameMatches);
+                items.addAll(0, nameMatches);
+
+                // 2. Ensure multiple selection is on
+                table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                table.getSelectionModel().clearSelection();
+                
+                // 3. Highlight every single match
+                for (Student s : nameMatches) {
+                    table.getSelectionModel().select(s);
+                }
+                
+                // 4. Scroll to the very top to see the grouped results
+                table.scrollTo(0);
+                
+                // 5. Only show the pop-up if exactly ONE person was found
+                if (nameMatches.size() == 1) {
+                    showStudentInfoDialog(nameMatches.get(0));
+                }
+                
+                return; 
             }
+
+            // If we reach this point, nothing matched at all
+            showWarningDialog("No student found matching: " + search.getText());
+            search.clear();
         });
 
         //action buttons
